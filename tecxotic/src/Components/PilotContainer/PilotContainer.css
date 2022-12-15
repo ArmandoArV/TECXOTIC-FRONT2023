@@ -1,0 +1,8 @@
+.PilotCards-wrapper{
+    display: grid;
+    background-color: var(--aqua_tecxotic);
+    width: 90%;
+    height: 900px;
+    margin: 0 auto;
+    margin-top: 10px;
+}

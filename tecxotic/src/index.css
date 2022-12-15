@@ -1,3 +1,11 @@
+:root{
+  --white_tecxotic: #D9D9D9;
+  --aqua_tecxotic: #2F9FAD;
+  --mid_dark_tecxotic: #1A5860;
+  --dark_tecxotic: #1E646E;
+}
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,6 +13,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--white_tecxotic);
 }
 
 code {

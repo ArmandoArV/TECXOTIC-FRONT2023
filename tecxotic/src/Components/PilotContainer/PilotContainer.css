@@ -21,4 +21,16 @@
     margin-top: 1%;
     margin-bottom: 1%;
     box-shadow: -4px 0px 4px rgba(0, 0, 0, 0.25), 4px 0px 4px rgba(0, 0, 0, 0.25), 0px -4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(2px);}
+    backdrop-filter: blur(2px);
+}
+
+.PilotCard-Right h1{
+    color: #FFFFFF;
+    font-family: 'JetBrains Mono', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 5rem;
+    line-height: 127px;
+    text-align: center;
+    text-transform: uppercase;
+}

@@ -1,0 +1,13 @@
+.range {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 200px;
+    height: 20px;
+    padding: 16px;
+    background: var(--mid_dark_tecxotic);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+

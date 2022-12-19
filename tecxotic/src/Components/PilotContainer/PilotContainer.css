@@ -11,7 +11,7 @@
 
 .PilotCards-container .PilotCard-Left{
     width: 50%;
-
+    margin-left: -5%;
 }
 
 .PilotCard-Right{
@@ -33,4 +33,11 @@
     line-height: 127px;
     text-align: center;
     text-transform: uppercase;
+}
+
+#Main1{
+    width: 800px;
+    height: 452px;
+    margin-left: 5%;
+
 }

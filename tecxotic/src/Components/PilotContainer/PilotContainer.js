@@ -1,8 +1,11 @@
 import React from "react";
+import * as THREE from 'three';
 import styles from "./PilotContainer.css";
 import CameraProp from "../CameraProp/CameraProp";
 import IndicatorsContainer from "../IndicatorsContainer/IndicatorsContainer";
 import SpeedContainer from "../SpeedContainer/SpeedContainer";
+import Visualizer from "../VisualizerComponent/Visualizer";
+import ROV from "../../Assets/ROV.obj"
 export default function PilotContainer() {
     return (
         <div className="PilotCards-container">
@@ -13,6 +16,7 @@ export default function PilotContainer() {
             </div>
             <div className={"PilotCard-Right"}>
                 <h1>Navigation</h1>
+                <Visualizer modelUrl={ROV} />
             </div>
         </div>
     );

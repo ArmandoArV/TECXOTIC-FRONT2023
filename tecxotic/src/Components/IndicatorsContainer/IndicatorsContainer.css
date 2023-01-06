@@ -12,5 +12,6 @@
 .Indicators-container .Indicators-img{
     width: 10%;
     height: 100%;
+    fill: #f30909 !important;
 
 }

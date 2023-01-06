@@ -10,10 +10,10 @@ import Flag from "../../Images/Flag.svg";
 export default function IndicatorsContainer() {
     return(
         <div className="Indicators-container">
-            <IndicatorsProp classImg="Indicators-img" indImg={Wifi} altImg="Wifi" />
+            <IndicatorsProp classImg="Indicators-img" indImg={Wifi} altImg="Wifi" class={styles.IndicatorsContainer} />
             <IndicatorsProp classImg="Indicators-img" indImg={Microchip} altImg="Microchip" />
             <IndicatorsProp classImg="Indicators-img" indImg={Controller} altImg="Controller" />
-            <IndicatorsProp classImg="Indicators-img" indImg={Flag} altImg="Flag" />
+            <IndicatorsProp classImg="Indicators-img" indImg={Flag} altImg="Flag" class={styles.IndicatorsContainer} />
         </div>
     );
 }

@@ -39,5 +39,22 @@
     width: 800px;
     height: 452px;
     margin-left: 5%;
+}
 
+#Main2{
+    width: 420px;
+    height: 300px;
+    position: relative;
+    margin-left: 45%;
+}
+
+.PilotCard-Left .ROV-NAME{
+    color: #FFFFFF;
+    font-family: 'JetBrains Mono', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 127px;
+    margin-left: 5%;
+    margin-top: -15%;
 }

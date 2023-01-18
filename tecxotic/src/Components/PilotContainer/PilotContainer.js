@@ -12,9 +12,15 @@ export default function PilotContainer() {
                     image="https://www.nasa.gov/sites/all/themes/custom/nasatwo/images/NASA-AD-background.png" 
                     idImg ="Main1" 
                     styles={{ marginTop: "1%" }}
-                />                
+                />
                 <IndicatorsContainer />
                 <SpeedContainer />
+                <CameraProp
+                    image="https://www.nasa.gov/sites/all/themes/custom/nasatwo/images/NASA-AD-background.png"
+                    idImg="Main2"
+                    styles={{ marginTop: "-18%" }}
+                />
+                <h2 className={"ROV-NAME"}>KEMONITO</h2>
             </div>
             <div className={"PilotCard-Right"}>
                 <h1>Navigation</h1>

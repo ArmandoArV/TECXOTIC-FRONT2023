@@ -3,10 +3,11 @@
     flex-flow: row wrap;
     justify-content: space-evenly;
     background-color: var(--mid_dark_tecxotic);
-    width: 50%;
+    width: 35%;
     height: 10%;
     margin-left: 5%;
     margin-top: 1%;
+    position: relative;
 }
 
 .Indicators-container .Indicators-img{

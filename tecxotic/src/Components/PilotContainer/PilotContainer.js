@@ -8,13 +8,16 @@ export default function PilotContainer() {
     return (
         <div className="PilotCards-container">
             <div className={"PilotCard-Left"}>
-                <CameraProp image="https://www.nasa.gov/sites/all/themes/custom/nasatwo/images/NASA-AD-background.png" idImg ="Main1"/>
+                <CameraProp 
+                    image="https://www.nasa.gov/sites/all/themes/custom/nasatwo/images/NASA-AD-background.png" 
+                    idImg ="Main1" 
+                    styles={{ marginTop: "1%" }}
+                />                
                 <IndicatorsContainer />
                 <SpeedContainer />
             </div>
             <div className={"PilotCard-Right"}>
                 <h1>Navigation</h1>
-
             </div>
         </div>
     );

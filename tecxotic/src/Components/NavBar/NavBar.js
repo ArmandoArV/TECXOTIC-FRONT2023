@@ -9,7 +9,7 @@ import Indicator from "../../Images/Indicator.svg";
 import Microchip from "../../Images/Microchip.svg";
 import Wifi from "../../Images/Wifi.svg";
 import SliderComponent from '../SliderComponent/SliderComponent';
-import DrivingMode from '../../Images/DrivingMode.svg';
+import DrivingMode from '../../Images/DrivingMode1.svg';
 
 
 const Navbar = () => {
@@ -22,7 +22,7 @@ const Navbar = () => {
     <nav>
         <div className="nav-links">
             <ol className='Indicators-List'>
-                <li> <IndicatorC image={Wifi} alt="Wifi" className="Wifi-Icon"/> </li>
+                <li> <IndicatorC image={Wifi} style={{fill:"#00000"}} alt="Wifi" className="Wifi-Icon"/> </li>
                 <li> <IndicatorC image={Flag} alt="Flag" className="Fhalag-Icon"/> </li>
                 <li> <IndicatorC image={DrivingMode} alt="Driving" className="DrivingMode-Icon"/> </li>
                 <li> <IndicatorC image={Controller} alt="Controller" className="Controller-Icon"/> </li>

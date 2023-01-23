@@ -3,7 +3,7 @@ import styles from "./PilotContainer.css";
 import CameraProp from "../CameraProp/CameraProp";
 import Gyro from "../Gyroscope/Gyro";
 import Navbar from "../NavBar/NavBar";
-
+import Crosshair from "../CrosshairProp/Crosshair";
 export default function PilotContainer() {
     return (
         <>
@@ -22,6 +22,7 @@ export default function PilotContainer() {
                 <Gyro roll="152°"/>
                 <Gyro pitch="909090"/>
                 <Gyro yaw="0°"/>
+                <Crosshair/>
             </div>
         </div>
         <Navbar/>

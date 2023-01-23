@@ -8,6 +8,7 @@ import Flag from "../../Images/Flag.svg";
 import Indicator from "../../Images/Indicator.svg";
 import Microchip from "../../Images/Microchip.svg";
 import Wifi from "../../Images/Wifi.svg";
+import SliderComponent from '../SliderComponent/SliderComponent';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,6 +25,7 @@ const Navbar = () => {
                 <li> <IndicatorC image={Controller} alt="Controller" className="Controller-Icon"/> </li>
                 <li> <IndicatorC image={Indicator} alt="Indicator" className="Indicator-Icon"/> </li>
             </ul>
+            <SliderComponent />
         </div>
     </nav>
   );

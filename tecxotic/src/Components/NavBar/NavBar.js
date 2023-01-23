@@ -10,11 +10,12 @@ import Microchip from "../../Images/Microchip.svg";
 import Wifi from "../../Images/Wifi.svg";
 import SliderComponent from '../SliderComponent/SliderComponent';
 
-const Navbar = (props) => {
-  const [isOpen, setIsOpen] = useState(false);
+const Navbar = () => {
+  const [speed, setSpeed] = useState(50);
 
-  const toggle = () => setIsOpen(!isOpen);
-
+  const updateSpeed = (newSpeed) => {
+      setSpeed(newSpeed);
+  }
   return (
     <nav>
         <div className="nav-links">
@@ -24,9 +25,9 @@ const Navbar = (props) => {
                 <li> <IndicatorC image={Microchip} alt="Microchip" className="Microchip-Icon"/> </li>
                 <li> <IndicatorC image={Controller} alt="Controller" className="Controller-Icon"/> </li>
                 <li> <IndicatorC image={Indicator} alt="Indicator" className="Indicator-Icon"/> </li>
-                <li className='SpeedContainer'><h2>Speed: {props.speed}</h2></li>
+                <li className='SpeedContainer'><h2>Speed: {speed}</h2></li>
             </ol>
-            <SliderComponent />
+            <SliderComponent onChange={updateSpeed}/>
         </div>
     </nav>
   );

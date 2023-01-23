@@ -10,7 +10,7 @@ import Microchip from "../../Images/Microchip.svg";
 import Wifi from "../../Images/Wifi.svg";
 import SliderComponent from '../SliderComponent/SliderComponent';
 
-const Navbar = () => {
+const Navbar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -18,13 +18,14 @@ const Navbar = () => {
   return (
     <nav>
         <div className="nav-links">
-            <ul className='Indicators-List'>
+            <ol className='Indicators-List'>
                 <li> <IndicatorC image={Wifi} alt="Wifi" className="Wifi-Icon"/> </li>
                 <li> <IndicatorC image={Flag} alt="Flag" className="Fhalag-Icon"/> </li>
                 <li> <IndicatorC image={Microchip} alt="Microchip" className="Microchip-Icon"/> </li>
                 <li> <IndicatorC image={Controller} alt="Controller" className="Controller-Icon"/> </li>
                 <li> <IndicatorC image={Indicator} alt="Indicator" className="Indicator-Icon"/> </li>
-            </ul>
+                <li><h2>Speed: {props.speed}</h2></li>
+            </ol>
             <SliderComponent />
         </div>
     </nav>

@@ -9,12 +9,13 @@ export default function PilotContainer() {
         <>
         <div className="PilotCards-container">
             <CameraProp 
-                    image="https://www.nasa.gov/sites/all/themes/custom/nasatwo/images/NASA-AD-background.png" 
+                    image="http://127.0.0.1:8080/video1" 
                     idImg ="Main1" 
             />
             <CameraProp
-                    image=""
+                    image="http://127.0.0.1:8080/video2"
                     idImg ="Main2"
+                    styles = {{boxShadow:"2.5px 2px 2px 0px rgba(0,0,0,0.75)"}}
             />
 
             <div className="Gyro-container">
@@ -23,7 +24,7 @@ export default function PilotContainer() {
                 <Gyro yaw="0°"/>
             </div>
         </div>
-        <Navbar/>
+        <Navbar speed="20"/>
 
         </>
     );

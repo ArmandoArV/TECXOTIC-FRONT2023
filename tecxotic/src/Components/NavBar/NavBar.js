@@ -24,7 +24,7 @@ const Navbar = (props) => {
                 <li> <IndicatorC image={Microchip} alt="Microchip" className="Microchip-Icon"/> </li>
                 <li> <IndicatorC image={Controller} alt="Controller" className="Controller-Icon"/> </li>
                 <li> <IndicatorC image={Indicator} alt="Indicator" className="Indicator-Icon"/> </li>
-                <li><h2>Speed: {props.speed}</h2></li>
+                <li className='SpeedContainer'><h2>Speed: {props.speed}</h2></li>
             </ol>
             <SliderComponent />
         </div>

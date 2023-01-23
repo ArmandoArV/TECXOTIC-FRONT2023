@@ -51,11 +51,8 @@ nav {
     fill: #fff !important;
 }
 
-.nav-links .Indicators-List h2{
+.nav-links .Indicators-List .SpeedContainer{
+  font-size: 0.8rem;
   color: #fff;
-  margin-right: 2%;
-  background-color: aqua;
-  width: 100%;
-  font-size: 1 rem;
 }
   

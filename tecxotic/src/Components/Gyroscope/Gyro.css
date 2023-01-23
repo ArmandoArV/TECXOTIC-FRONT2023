@@ -1,0 +1,42 @@
+.Gyro-container{
+    position: absolute;
+    width: 25%;
+    height: 50%;
+    border-radius: 50%;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    border: 1px solid rgb(255, 255, 255);
+}
+
+.Gyro-container .Roll{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.Gyro-container .Pitch{
+    position: absolute;
+    margin-left: -50%;
+    width: 50%;
+    height: 25%;
+    color: #fff;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 10%;
+}
+
+.Gyro-container .Yaw{
+    position: absolute;
+    margin-left: 90%;
+    width: 50%;
+    height: 25%;
+    color: #fff;
+    font-size: 1.5rem;
+    text-align: center;
+}

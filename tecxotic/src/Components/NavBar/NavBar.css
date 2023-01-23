@@ -1,0 +1,53 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed; /* changes position to fixed */
+    width: 100%;
+    top: 0;
+    left: 0; /* adds left property */
+    z-index: 999; /* increases z-index to ensure navbar is on top */
+    padding: 10px 20px; /* adds padding */
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    background-color: #333; /* changes background color to a darker shade */
+  }
+  
+  nav .nav-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+  }
+  
+  .nav-links .Indicators-List {
+    display: flex;
+    list-style-type: none;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .nav-links .Indicators-List li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .nav-links .Indicators-List li a {
+    color: #fff; /* changes color of text to white */
+    text-decoration: none; /* removes underline from links */
+    padding: 10px; /* adds padding */
+    font-size: 16px; /* increases font size */
+  }
+  
+  .nav-links .Indicators-List li img {
+    width: 30px;
+    height: 30px;
+    margin: 0 10px;
+    color: #fff;
+    fill: #fff !important;
+}
+  

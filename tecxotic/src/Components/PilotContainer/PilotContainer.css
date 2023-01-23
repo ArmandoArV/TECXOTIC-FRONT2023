@@ -1,60 +1,28 @@
 .PilotCards-container{
+    position: absolute;
+    width: 100%;
+    height: 100%;
     display: flex;
-    flex-flow: row wrap;
-    background-color: var(--aqua_tecxotic);
-    width: 99%;
-    height: 99%;
-    margin: 1% auto 0;
-    justify-content: space-evenly;
-
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
 }
-
-.PilotCards-container .PilotCard-Left{
-    width: 50%;
-    margin-left: -5%;
-}
-
-.PilotCard-Right{
-    width: 40%;
-    background-color: var(--dark_tecxotic);
-    height: 90%;
-    margin-top: 1%;
-    margin-bottom: 1%;
-    box-shadow: -4px 0px 4px rgba(0, 0, 0, 0.25), 4px 0px 4px rgba(0, 0, 0, 0.25), 0px -4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(2px);
-}
-
-.PilotCard-Right h1{
-    color: #FFFFFF;
-    font-family: 'JetBrains Mono', serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 5rem;
-    line-height: 127px;
-    text-align: center;
-    text-transform: uppercase;
-}
-
 #Main1{
-    width: 800px;
-    height: 452px;
-    margin-left: 5%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    position: absolute;
 }
 
 #Main2{
-    width: 420px;
-    height: 300px;
-    position: relative;
-    margin-left: 45%;
-}
+    background-color: aliceblue;
+    width: 25%;
+    height: 25%;
+    position: absolute;
+    top: 65%;
+    left: 70%;
 
-.PilotCard-Left .ROV-NAME{
-    color: #FFFFFF;
-    font-family: 'JetBrains Mono', serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 2rem;
-    line-height: 127px;
-    margin-left: 5%;
-    margin-top: -15%;
 }

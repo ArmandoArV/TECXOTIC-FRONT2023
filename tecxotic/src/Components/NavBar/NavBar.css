@@ -50,4 +50,12 @@ nav {
     color: #fff;
     fill: #fff !important;
 }
+
+.nav-links .Indicators-List h2{
+  color: #fff;
+  margin-right: 2%;
+  background-color: aqua;
+  width: 100%;
+  font-size: 1 rem;
+}
   

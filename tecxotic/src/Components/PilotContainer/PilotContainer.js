@@ -24,7 +24,7 @@ export default function PilotContainer() {
                 <Gyro yaw="0°"/>
             </div>
         </div>
-        <Navbar/>
+        <Navbar speed="20"/>
 
         </>
     );

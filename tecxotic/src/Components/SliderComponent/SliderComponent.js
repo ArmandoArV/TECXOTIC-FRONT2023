@@ -1,20 +1,21 @@
 import React, { useState } from "react";
 import styles from "./SliderComponent.css";
 
-export default function SliderComponent() {
+export default function SliderComponent(props) {
     const [value, setValue] = useState(50);
     return (
-            <input
-                onChange={(e) => {
-                    const rangeVal = parseInt(e.target.value);
-                    setValue(rangeVal);
-                }}
-                type="range"
-                min={1}
-                max={100}
-                value={value}
-                className="range"
-                id="myRange"
-            />
+        <input
+        onChange={(e) => {
+            const rangeVal = parseInt(e.target.value);
+            setValue(rangeVal);
+            props.onChange(rangeVal);
+        }}
+        type="range"
+        min={0}
+        max={100}
+        value={value}
+        className="range"
+        id="myRange"
+    />
     );
 }

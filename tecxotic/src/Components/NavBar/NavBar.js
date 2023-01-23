@@ -12,11 +12,12 @@ import SliderComponent from '../SliderComponent/SliderComponent';
 import DrivingMode from '../../Images/DrivingMode.svg';
 
 
-const Navbar = (props) => {
-  const [isOpen, setIsOpen] = useState(false);
+const Navbar = () => {
+  const [speed, setSpeed] = useState(50);
 
-  const toggle = () => setIsOpen(!isOpen);
-
+  const updateSpeed = (newSpeed) => {
+      setSpeed(newSpeed);
+  }
   return (
     <nav>
         <div className="nav-links">
@@ -26,9 +27,9 @@ const Navbar = (props) => {
                 <li> <IndicatorC image={DrivingMode} alt="Driving" className="DrivingMode-Icon"/> </li>
                 <li> <IndicatorC image={Controller} alt="Controller" className="Controller-Icon"/> </li>
                 <li> <IndicatorC image={Indicator} alt="Indicator" className="Indicator-Icon"/> </li>
-                <li className='SpeedContainer'><h2>Speed: {props.speed}</h2></li>
+                <li className='SpeedContainer'><h2>Speed: {speed}</h2></li>
             </ol>
-            <SliderComponent />
+            <SliderComponent onChange={updateSpeed}/>
         </div>
     </nav>
   );

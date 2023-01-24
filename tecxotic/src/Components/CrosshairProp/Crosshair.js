@@ -1,14 +1,17 @@
 import React,{useState,useEffect} from "react";
-import styles from "./Cross.css"
+import "./Cross.css"
 
 export default function Crosshair (props){
-    const [rotation, setRotation] = useState(0);
+    const [rotation, setRotation] = useState(props.rotation || 0);
+
     useEffect(() => {
-        const interval = setInterval(() => {
-            setRotation(rotation+0.5);
-        }, 10);
-        return () => clearInterval(interval);
-    }, [rotation]);
+        if(props.updateRotation) {
+          const interval = setInterval(() => {
+            setRotation(props.updateRotation);
+          }, 10);
+          return () => clearInterval(interval);
+        }
+    }, [props.updateRotation]);
 
     return (
         <div className="crosshair" style={{ transform: `rotate(${rotation}deg)` }}>

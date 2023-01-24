@@ -1,19 +1,12 @@
 import React from "react";
-import styles from "../Gyroscope/Gyro.css"
+import "../Gyroscope/Gyro.css"
 
-export default function Gyro(props){
+export default function Gyro({roll, pitch, yaw}){
     return(
-            <div className="Gyro">
-                <div className="Roll">
-                    <h2>{props.roll}</h2>
-                </div>
-                <div className="Pitch">
-                    <h2>{props.pitch}</h2>
-                </div>
-                <div className="Yaw">
-                    <h2>{props.yaw}</h2>
-                </div>
+        <div className="Gyro">
+            <h2 className="Roll">{roll}°</h2>
+            <h2 className="Pitch">Pitch: {pitch}°</h2>
+            <h2 className="Yaw">Yaw: {yaw}°</h2>
         </div>
-
     );
 }

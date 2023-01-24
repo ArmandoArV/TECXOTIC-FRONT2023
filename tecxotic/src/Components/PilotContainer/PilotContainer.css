@@ -14,15 +14,6 @@
     background-size: cover;
     height: 100%;
     width: 100%;
-    position: absolute;
+    position: relative;
 }
 
-#Main2{
-    background-color: aliceblue;
-    width: 25%;
-    height: 25%;
-    position: absolute;
-    top: 65%;
-    left: 70%;
-
-}

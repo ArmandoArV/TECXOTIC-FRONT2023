@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./SliderComponent.css";
 
 export default function SliderComponent(props) {
-    const [value, setValue] = useState(50);
+    const [value, setValue] = useState(0);
     return (
         <input
         onChange={(e) => {

@@ -10,14 +10,15 @@ import Microchip from "../../Images/Microchip.svg";
 import Wifi from "../../Images/Wifi.svg";
 import SliderComponent from '../SliderComponent/SliderComponent';
 import DrivingMode from '../../Images/DrivingMode1.svg';
+import Camera from '../../Images/Camera.svg';
 
-
-const Navbar = () => {
-  const [speed, setSpeed] = useState(50);
+const Navbar = (props) => {
+  const [speed, setSpeed] = useState(0);
 
   const updateSpeed = (newSpeed) => {
       setSpeed(newSpeed);
   }
+
   return (
     <nav>
         <div className="nav-links">
@@ -31,6 +32,7 @@ const Navbar = () => {
             </ol>
             <SliderComponent onChange={updateSpeed}/>
         </div>
+        <button className="ChangeCamera" onClick={props.changeCamera}><img src={Camera} alt="Camera" className="Camera-Icon"/></button>
     </nav>
   );
 }

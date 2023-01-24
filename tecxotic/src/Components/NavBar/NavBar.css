@@ -53,9 +53,23 @@ nav {
 }
 
 .nav-links .Indicators-List .SpeedContainer{
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   color: #fff;
 }
 
 
-  
+nav button{
+  background-color: var(--aqua_tecxotic);
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  outline: none;
+  margin-right: 5%;
+  border-radius: 5px;
+}
+
+nav button:hover{
+  background-color: rgb(255, 255, 255);
+}
+

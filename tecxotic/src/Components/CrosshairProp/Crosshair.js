@@ -5,7 +5,7 @@ export default function Crosshair (props){
     const [rotation, setRotation] = useState(0);
     useEffect(() => {
         const interval = setInterval(() => {
-            setRotation(rotation+1);
+            setRotation(rotation+0.5);
         }, 10);
         return () => clearInterval(interval);
     }, [rotation]);

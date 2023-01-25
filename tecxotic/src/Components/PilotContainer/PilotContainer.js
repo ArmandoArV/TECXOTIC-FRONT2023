@@ -7,7 +7,7 @@ import Crosshair from "../CrosshairProp/Crosshair";
 
 export default function PilotContainer() {
     const [activeCamera, setActiveCamera] = useState(1);
-    const [rotation, setRotation] = useState(-25);
+    const [rotation, setRotation] = useState(0);
     const cameras = [
         {
             image: "https://youtu.be/DHUnz4dyb54",

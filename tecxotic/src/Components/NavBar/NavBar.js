@@ -16,9 +16,9 @@ const Navbar = (props) => {
         <div className="nav-links">
             <ol className='Indicators-List'>
                 <li className='Indicator-Item'><SVG name='wifi'color="red"/></li>
-                <li className='Indicator-Item'><SVG name='gamepad'color="red"/></li>
-                <li className='Indicator-Item'><SVG name='flag'color="red"/></li>
-                <li className='Indicator-Item'><SVG name='gear'color="red"/></li>
+                <li className='Indicator-Item'><SVG name='gamepad'color="red"nameClass={"Icon"}/></li>
+                <li className='Indicator-Item'><SVG name='flag'color="red"nameClass={"Icon"}/></li>
+                <li className='Indicator-Item'><SVG name='gear'color="red" nameClass={"Icon"}/></li>
                 <li><h2 className="SpeedContainer">Speed: {speed}</h2></li>
             </ol>
             <SVG name='gauge-simple'color="white"/>

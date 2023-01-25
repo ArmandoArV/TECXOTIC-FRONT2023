@@ -38,20 +38,12 @@ nav {
     width: 100%;
     margin: 0 auto;
   }
-  
-  .nav-links .Indicators-List li a {
-    color: #fff; /* changes color of text to white */
-    text-decoration: none; /* removes underline from links */
-    padding: 10px; /* adds padding */
-    font-size: 16px; /* increases font size */
-  }
+
   
   .nav-links .Indicators-List li img {
     width: 30px;
     height: 30px;
     margin: 0 10px;
-    color: #fff;
-    fill: #fff !important;
 }
 
 .nav-links .Indicators-List .SpeedContainer{

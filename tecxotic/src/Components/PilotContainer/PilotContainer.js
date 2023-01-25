@@ -5,9 +5,13 @@ import Gyro from "../Gyroscope/Gyro";
 import Navbar from "../NavBar/NavBar";
 import Crosshair from "../CrosshairProp/Crosshair";
 
-export default function PilotContainer() {
+export default function PilotContainer(props) {
     const [activeCamera, setActiveCamera] = useState(1);
-    const [rotation, setRotation] = useState(0);
+    const [rotation] = useState(props.rotation);
+    const [pitch] = useState(props.pitch);
+    const [yaw] = useState(props.yaw);
+    const dicOfCon = {wifi: props.wifiStatus, gamepad: props.gamepadStatus, flag: props.flagStatus, gear: props.gearStatus}
+    const [connections, setConnections] = useState([dicOfCon.wifi, dicOfCon.gamepad, dicOfCon.flag, dicOfCon.gear]);
     const cameras = [
         {
             image: "http://218.45.5.57:80/SnapshotJPEG?Resolution=640x480&amp;Quality=Clarity&amp;1674619720",
@@ -37,10 +41,10 @@ export default function PilotContainer() {
                     <div className="staticHalfLine" >
                         <Crosshair rotation={rotation} />
                     </div>
-                    <Gyro roll={rotation} pitch ={rotation} yaw={rotation} />
+                    <Gyro roll={rotation} pitch ={pitch} yaw={yaw} />
                 </div>
             </div>
-            <Navbar changeCamera={handleCameraChange} />
+            <Navbar changeCamera={handleCameraChange} connections={connections}/>
         </>
     );
 }

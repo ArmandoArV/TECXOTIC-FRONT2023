@@ -9,7 +9,7 @@ nav {
     z-index: 999; /* increases z-index to ensure navbar is on top */
     padding: 10px 20px; /* adds padding */
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    background-color: var(--aqua_tecxotic); /* changes background color to a darker shade */
+    background-color: #000; /* changes background color to black */
 
   }
   

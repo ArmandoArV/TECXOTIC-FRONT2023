@@ -10,7 +10,7 @@ export default function PilotContainer() {
     const [rotation, setRotation] = useState(-25);
     const cameras = [
         {
-            image: "http://83.56.31.69/mjpg/video.mjpg",
+            image: "https://youtu.be/DHUnz4dyb54",
             idImg: "Main1",
         },
         {

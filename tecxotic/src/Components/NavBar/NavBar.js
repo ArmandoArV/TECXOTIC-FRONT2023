@@ -1,16 +1,9 @@
 import React, { useState } from 'react';
-import styles from "./NavBar.css";
+import "./NavBar.css";
 import logo from "../../Images/logo.ico";
-import IndicatorC from '../IndicatorProp/Indicator';
-
-import Controller from "../../Images/Controller.svg";
-import Flag from "../../Images/Flag.svg";
-import Indicator from "../../Images/Indicator.svg";
-import Microchip from "../../Images/Microchip.svg";
-import Wifi from "../../Images/Wifi.svg";
 import SliderComponent from '../SliderComponent/SliderComponent';
-import DrivingMode from '../../Images/DrivingMode1.svg';
 import Camera from '../../Images/Camera.svg';
+import SVG from '../SVGProp/SVG';
 
 const Navbar = (props) => {
   const [speed, setSpeed] = useState(0);
@@ -23,13 +16,12 @@ const Navbar = (props) => {
     <nav>
         <div className="nav-links">
             <ol className='Indicators-List'>
-                <li> <IndicatorC image={Wifi} style={{fill:"#00000"}} alt="Wifi" className="Wifi-Icon"/> </li>
-                <li> <IndicatorC image={Flag} alt="Flag" className="Fhalag-Icon"/> </li>
-                <li> <IndicatorC image={DrivingMode} alt="Driving" className="DrivingMode-Icon"/> </li>
-                <li> <IndicatorC image={Controller} alt="Controller" className="Controller-Icon"/> </li>
-                <li> <IndicatorC image={Indicator} alt="Indicator" className="Indicator-Icon"/> </li>
-                <li className='SpeedContainer'><h2>Speed: {speed}</h2></li>
+                <li className='Indicator-Item'><SVG name='wifi'color="red"/></li>
+                <li className='Indicator-Item'><SVG name='gamepad'color="red"/></li>
+                <li className='Indicator-Item'><SVG name='flag'color="red"/></li>
+                <li className='Indicator-Item'><SVG name='gear'color="red"/></li>
             </ol>
+            <li className='Indicator-Item'><SVG name='gauge-simple'color="white"/></li>
             <SliderComponent onChange={updateSpeed}/>
         </div>
         <button className="ChangeCamera" onClick={props.changeCamera}><img src={Camera} alt="Camera" className="Camera-Icon"/></button>

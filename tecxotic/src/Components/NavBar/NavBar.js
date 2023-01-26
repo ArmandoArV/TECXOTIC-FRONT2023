@@ -12,9 +12,9 @@ const Navbar = (props) => {
       setSpeed(newSpeed);
   }
 
-  const [color, setColor] = useState("#c25345");
+  const [color, setColor] = useState("#bf5646");
   const updateColor = (connected) => {
-      setColor(connected ? "#b7f944" : "#c25345")
+      setColor(connected ? "#b7f944" : "#bf5646")
   }
   Navbar.propTypes = {
     changeCamera: PropTypes.func,
@@ -30,7 +30,7 @@ const Navbar = (props) => {
                     return <li className='Indicator-Item' key={index}>
                         <SVG 
                             name={`${arrayOfSVGNames[index]}`} 
-                            color={connection ? "#b7f944" : "#c25345"}
+                            color={connection ? "#86e642" : "#bf5646"}
                         />
                     </li>
                 })}

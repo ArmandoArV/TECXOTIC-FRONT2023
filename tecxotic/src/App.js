@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="App">
       <>
-        <PilotContainer wifiStatus={true} gamepadStatus={true} flagStatus={true} gearStatus={true} rotation={0} pitch={0} yaw={90} />
+        <PilotContainer wifiStatus={true} gamepadStatus={true} flagStatus={false} gearStatus={true} rotation={0} pitch={0} yaw={90} />
       </>
     </div>
   );

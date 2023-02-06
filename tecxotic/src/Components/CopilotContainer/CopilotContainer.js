@@ -1,11 +1,14 @@
 import React from "react";
-import LateralNavbar from "../LateralNavbar/LateralNavbar";
+import Lateral from "../LateralNavbar/Lateral";
+import CameraProp from "../CameraProp/CameraProp";
+
 
 export default function CopilotContainer() {
     return (
         <>
+            
             <div className="copilotContainer">
-                <LateralNavbar />
+                <Lateral />
             </div>
         </>
     );

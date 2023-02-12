@@ -1,0 +1,44 @@
+.lateralNavbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 8%;
+    background-color: var(--mid_dark_tecxotic);
+    position: fixed;
+  }
+  
+  .Buttons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 80%;
+  }
+  
+  .button {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+    margin-bottom: 20px;
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+  }
+  
+  .button:hover {
+    background-color: var(--aqua_tecxotic);
+    transition: background-color 0.2s ease-in-out;
+    box-shadow: 0 0 10px var(--aqua_tecxotic);
+  }
+  
+  .button svg {
+    height: 20px;
+    width: 20px;
+    fill: #fff;
+    margin-left: 10px;
+  }
+  

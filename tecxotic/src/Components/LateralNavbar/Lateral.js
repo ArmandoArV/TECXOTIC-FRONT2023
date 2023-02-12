@@ -4,6 +4,7 @@ import ModelT from "../ModelTProp/ModelT";
 import DNA from "../DNAProp/DNA";
 import Comparator from "../ComparatorProp/Comparator";
 import Measure from "../MeasureProp/Measure";
+import "./Lateral.css";
 
 export default function LateralNavbar() {
   const arrayOfButtons = [
@@ -46,8 +47,14 @@ export default function LateralNavbar() {
             </button>
           ))}
         </div>
+        <div>
+        {selectedButton.name === "Measure " ? (
+          <Measure />
+        ) : (
+          React.createElement(selectedButton.component)
+        )}
       </div>
-      <div>{React.createElement(selectedButton.component)}</div>
+      </div>
     </>
   );
 }

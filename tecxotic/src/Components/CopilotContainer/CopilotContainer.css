@@ -1,0 +1,19 @@
+.copilotContainer {
+    height: 100vh;
+    display: flex;
+  }
+  
+  .lateral {
+    height: 100%;
+    width: 20%;
+    background-color: #fff;
+    overflow: auto;
+  }
+  
+  .camera-container {
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
+    overflow: auto;
+  }
+  

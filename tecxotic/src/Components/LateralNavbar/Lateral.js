@@ -47,13 +47,7 @@ export default function LateralNavbar() {
             </button>
           ))}
         </div>
-        <div>
-        {selectedButton.name === "Measure " ? (
-          <Measure />
-        ) : (
-          React.createElement(selectedButton.component)
-        )}
-      </div>
+
       </div>
     </>
   );

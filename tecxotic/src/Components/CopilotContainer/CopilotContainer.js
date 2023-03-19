@@ -19,11 +19,34 @@ export default function CopilotContainer() {
     <div className="copilotContainer">
       <Lateral />
       <div className="camera-container">
-        <CameraProp
-          image={cameras[0].image}
-          styles={{ height: "100%", width: "100%" }}
-        />
+        <div className="left-box">
+        </div>
+        <div className="right-box">
+            <div className="top-box">
+              
+            </div>
+            <div className="bottom-box">
+              </div>
+            </div>
       </div>
     </div>
   );
 }
+
+/*
+<CameraProp
+                image={cameras[0].image}
+                idImg={cameras[0].idImg}
+                styles={{width: "100%", height: "100%"}}
+              />
+
+
+
+
+              <CameraProp
+                image={cameras[1].image}
+                idImg={cameras[1].idImg}  
+                styles={cameras[1].styles}
+              />
+
+              */

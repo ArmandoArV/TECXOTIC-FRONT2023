@@ -1,5 +1,4 @@
-
-
+import re
 
 fishSpecies = {}
 fishSpecies['Rock_Beauty'] = {
@@ -31,7 +30,161 @@ acaataccaaactccactatttgtgtgagctgtcctaattactgcagtgctacttctgct
 ttctctccccgtccttgctgccggcatcacaatgcttcttacagaccgaaatcttaatac
 tactttctttgaccctgcaggagggggagacccaattctttaccagcacttg
 '''
-
 }
 
+fishSpecies['Four_Eye_Butterfly_Fish'] = {
+'''
+tctctatctagtattcggtgcttgagctgggatagtaggcaccgccttaagtctgctcat
+ccgagcagagctcagccagccaggcaccctcctaggcgacgatcagatttataatgtaat
+cgttacggcacatgcgttcgtaatgattttctttatagtaataccaattatgattggggg
+atttgggaattgactaattcccttaatgattggggctccggacatggccttccctcgaat
+gaataacataagcttttgactcctccctccatcctttttcctgcttcttgcctcttctgg
+cgtagagtccggggccggcactggatgaacagtttatcctccactagccggtaatctagc
+ccatgccggagcatccgttgatctaactatcttctcccttcaccttgcagggatctcctc
+cattcttggggctatcaattttattacaacaatcctcaacatgaaaccccctgctatgtc
+ccagtatcaaactccccttttcgtctgatctgttctaattacagccgttttacttctctt
+gtccctccccgttcttgcagccggaattacaatgcttcttacagaccgaaaccttaatac
+aaccttctttgaccctgcagggggcggcgaccccattctttaccaacacctgttc
+'''
+}
 
+fishSpecies['Blue_Tang'] = {
+'''
+cctttatttagtttttggtgcttgagctgggatagtaggaacggccctaagcctcctaat
+ccgggcagaattaagccaaccaggcgccctcctcggagatgatcaaatttataatgtaat
+tgttacagcacacgcattcgtaataattttctttatagtaataccaattatgattggtgg
+gttcggaaattgattaattccactaatgattggagcccctgacatagcattcccacgaat
+aaataacataagcttttgacttttaccaccatctttcctgcttctacttgcatcctctgc
+agtagaatctggtgcaggcacaggatgaacagtatacccccctctagccggtaatcttgc
+acatgcaggagcatccgtagatctcactattttctccctccacctagcagggatttcttc
+aattcttggagctattaattttattacaacaattattaatatgaaacctcctgctatttc
+ccaatatcaaacccccctgtttgtatgagcagtactaattaccgccgttctactccttct
+ctcacttcctgttctcgctgctggaattacaatactactcacagatcgaaacctgaatac
+cactttctttgacccagcaggtggaggagaccccattttatatcaacattta
+'''
+}
+
+fishSpecies['Yellowtail_Snapper'] = {
+'''
+cctttatctagtatttggtgcctgggccggaatagtaggcacggccctaagcctgctcat
+tcgagcagaactaagccagccaggagctcttcttggagacgaccagatttataatgtaat
+tgttacagcgcatgcatttgtaataattttctttatagtaataccaatcatgatcggagg
+attcgggaactgactgatcccactaatgatcggggcccccgatatggcattccctcgaat
+aaataacatgagcttttgactcctcccgccatcattcctattgctactcgcctcttctgg
+ggtagaagccggtgctggaactgggtgaacagtttaccctcccctagcaggaaacctagc
+acacgcaggagcatctgtagacctaactattttctccctgcatctagcaggtgtttcctc
+aattctgggagcaatcaacttcattacaacaatcatcaacatgaaacctcctgccatttc
+ccagtatcaaacgcccctattcgtctgagccgtcctaattactgctgttctacttcttct
+ctccctaccagttttagcggccggaattacaatgcttcttacagaccgaaatctaaacac
+aaccttctttgacccagcaggaggaggggatcccatcctctaccaacatctg
+'''
+}
+
+fishSpecies['Sargent_Major'] = {
+'''
+cctctatctagtatttggtgcttgagctggaatagtaggaacagccctgagcctccttat
+tcgagcagaactaagccaaccaggcgctctcctcggagacgaccagatttacaacgtaat
+tgttacggcacatgcctttgtaataattttctttatagtaataccaattataattggagg
+gtttggaaactgacttatcccactaatgatcggtgcccctgatatggcattcccccgaat
+gaacaatatgagcttctgacttcttcccccatcgttcctacttcttcttgcctcctccgg
+agttgaagcaggtgcaggaacaggctgaactgtctacccaccactatcaggcaacctagc
+tcacgcaggagcttctgttgacttaactattttctccctccacttagcaggtgtgtcctc
+aattttaggagccattaattttattaccactattattaatatgaaacctccagctatttc
+tcaataccagactcctctcttcgtatgagccgtactcatcacggccgtgctcctccttct
+gtcccttcctgttttagccgctggaattacgatacttctaaccgaccgaaacttaaatac
+cacattcttcgacccagctggaggaggagaccccattctttaccaacatttattc
+'''
+}
+
+fishSpecies['Goliath_Grouper'] = {
+'''
+cctttatcttgtatttggtgcctgggctgggatagtaggaacagcccttagcctactaat
+tcgggctgagctaagccagccaggggctctactgggcgatgaccagatctataatgtaat
+tgttacagcacatgcttttgtaataatctttttcatagtaatgccaatcatgattggtgg
+ctttggaaattgacttgtcccacttataatcggcgcccctgacatagcattccctcgaat
+aaataacataagcttctgacttctccccccttctttcctgctccttcttgcctcttcggg
+ggtagaagctggtgccggtactggttgaacggtctacccgcccctagccggaaatttagc
+ccatgcaggagcatccgtagacttaactattttctcacttcatttagcaggtatctcatc
+aattctaggtgcaattaactttattacaaccattattaacataaaaccccctgccatctc
+ccaataccaaacacctttgtttgtgtgagctgtactaatcacagcagtactactactcct
+ctcccttcccgtccttgccgccggcatcaccatgttgctcactgatcgtaaccttaacac
+taccttctttgacccagccggaggaggagatcca
+'''
+}
+
+fishSpecies['Blue_Headed_Wrasse'] = {
+'''
+cctctatcttgtgttcggcgcatgagccgggatagtagggacagccctaagcctgctcat
+ccgagcagagttaagccagcccggcgccctccttggggacgatcagatttataacgttat
+cgttacagcccacgcattcgtcataattttctttatagtaataccaattatgattggagg
+cttcggaaactgactaattcccctaatgattggggcccctgacatggccttccctcggat
+gaacaatataagcttctgacttcttccaccctcattccttcttcttctcgcctcctctgg
+cgttgaggcaggggccggaactggttggacagtctacccacccctagcagggaaccttgc
+ccatgctggtgcatccgttgaccttactattttttcacttcacttggcagggatttcatc
+aattctaggtgcaatcaacttcatcacaaccattattaatatgaaacccccagccatctc
+ccaatatcaaacgcctcttttcgtatgggctgttctcattacggcagtccttctcctcct
+ctcgctcccagtccttgccgctggtattacaatgctcttaacagaccgaaatcttaacac
+cactttcttcgaccctgctggagggggggacccaattctttaccaacacctg
+'''
+}
+
+fishSpecies['Queen_Parrotfish'] = {
+'''
+cctttaccttgtatttggtgcctgagccggaatagtaggcactgccttaagccttctcat
+ccgagctgaactaagtcaacccggggcccttctcggagacgaccagatttataatgttat
+cgttacagctcatgcatttgtaatgatcttttttatagtcatgcctatcataatcggagg
+cttcgggaactgactcatccccctcatgattggggcacctgacatggccttccctcgaat
+gaacaatatgagcttctgacttcttcctccctccttcctcctattactcgcctcctctgg
+cgtagaagcgggagcaggtaccggatgaaccgtttacccccctctagcaggaaatcttgc
+acacgcaggtgcatccgtcgacctaacaattttctctcttcatctagcaggaatttcttc
+tatcctaggagcaattaactttattacaacaatcgttaacataaaaccgcctgccatctc
+ccaataccaaaccccgctgttcgtatgagctgttttaattactgccgtacttcttctcct
+ctcactccctgtcctcgctgcaggaatcacaatgcttctcacagatcgaaatctaaacac
+gaccttctttgaccctgcaggcggagganacccaattctttatcaacacctg
+'''
+}
+
+fishSpecies['Dusky_Damselfish'] = {
+'''
+cctttatctagtatttggtgcctgagccggaatagtaggaacagctctaagtctcctcat
+tcgggcagaactaagccaacccggcgctctccttggagacgaccaaatttataatgtaat
+tgttacggcacacgcctttgtaataatcttctttatagtaataccaatcatgattggagg
+cttcggaaactgacttattcccctaatgatcggggcccccgacatggcctttccccgaat
+aaacaatataagcttctgacttctccccccttcctttcttcttctgcttgcctcttcagg
+tgtagaagcaggtgcaggaacaggatgaacagtctaccctccactatctggcaacctagc
+tcatgcaggggcctccgttgacctaaccattttctcccttcatctagcaggaatttcatc
+gatcctaggagcaatcaactttatcactactattattaacatgaagcccccttctatctc
+tcaataccaaacccctctctttgtatgagcagttctaatcaccgccgtactactactcct
+ctcccttcccgtcttagctgccggtattactatgctcctaacggaccgaaaccttaatac
+tactttctttgaccctgcaggaggaggagacccaatcctttaccaacacctt
+'''
+}
+
+foundSpeciesArray = []
+eDNA_array = ['ggcattcccccgaatgaataacataagcttttgacttctccctccctcccttctccttcttctagcatccgctggggtagaagctggggccggaactggatgaacagtttacccacccctagcgggtaatctagc','cacgcattcgtaataattttctttatagtaataccaattatgattggtgggttcggaaattgattaattc']
+
+
+
+def searchSpecies(eDNA_array):
+
+    index = -1
+
+    # searches each substring in every element inside species dictionary
+    for x in range(len(eDNA_array)):
+        for key in fishSpecies:
+            currentKey = str(fishSpecies[key])
+            currentKey = currentKey.replace(r'\n', '')
+            currentKey = currentKey.replace('{','')
+            currentKey = currentKey.replace('}','')
+            
+            #print(currentKey)
+
+            index = currentKey.find(eDNA_array[x])
+            if index != -1:
+                foundSpeciesArray.append(str(key))
+                break
+
+    print(foundSpeciesArray)
+    return foundSpeciesArray
+
+searchSpecies(eDNA_array)

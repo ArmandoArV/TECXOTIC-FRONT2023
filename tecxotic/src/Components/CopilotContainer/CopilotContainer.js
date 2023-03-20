@@ -27,7 +27,7 @@ export default function CopilotContainer() {
               <CameraProp
                 image={cameras[0].image}
                 idImg={cameras[0].idImg}
-                styles={{ width: "90%", height: "90%", borderRadius: "25px" }}
+                styles={{ width: "95%", height: "95%", borderRadius: "25px" }}
               />
             </div>
           </div>
@@ -36,7 +36,7 @@ export default function CopilotContainer() {
               <CameraProp
                 image={cameras[0].image}
                 idImg={cameras[0].idImg}
-                styles={{ width: "90%", height: "90%", borderRadius: "25px" }}
+                styles={{ width: "95%", height: "95%", borderRadius: "25px" }}
               />
             </div>
           </div>

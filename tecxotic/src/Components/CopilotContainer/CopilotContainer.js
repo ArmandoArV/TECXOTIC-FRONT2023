@@ -22,12 +22,25 @@ export default function CopilotContainer() {
         <div className="left-box">
         </div>
         <div className="right-box">
-            <div className="top-box">
-              
+          <div className="top-right-box">
+            <div className="CameraContainer">
+              <CameraProp
+                image={cameras[0].image}
+                idImg={cameras[0].idImg}
+                styles={{ width: "90%", height: "90%", borderRadius: "25px" }}
+              />
             </div>
-            <div className="bottom-box">
-              </div>
+          </div>
+          <div className="bottom-right-box">
+            <div className="CameraContainer">
+              <CameraProp
+                image={cameras[0].image}
+                idImg={cameras[0].idImg}
+                styles={{ width: "90%", height: "90%", borderRadius: "25px" }}
+              />
             </div>
+          </div>
+        </div>
       </div>
     </div>
   );

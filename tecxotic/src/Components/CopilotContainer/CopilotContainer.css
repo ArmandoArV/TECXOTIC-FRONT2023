@@ -1,41 +1,62 @@
 .copilotContainer {
-    height: 100vh;
-    display: flex;
-  }
-  
-  .lateral {
-    height: 100%;
-    width: 20%;
-    background-color: #fff;
-    overflow: auto;
-  }
-  
-  .camera-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 95%;
-    margin-left: 5%;
-  }
-  
-  .left-box {
-    display: flex;
-    flex-direction: row;
-    height: 100%;
-    width: 45%;
-    background-color: rgb(255, 145, 0);
-    justify-content: center;
-    align-items: center;
-    margin-left: 50%;
+  height: 100vh;
+  display: flex;
+}
 
-  }
+.lateral {
+  height: 100%;
+  width: 20%;
+  background-color: #fff;
+  overflow: auto;
+}
 
-  .right-box{
-    display: flex;
-    flex-direction: row;
-    width: 20%;
-    background-color: rgb(255, 145, 0);
-    
-  }
+.camera-container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+  margin-left: 5%;
+}
+
+.left-box {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 50%;
+  background-color: rgb(255, 145, 0);
+}
+
+.right-box {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 50%;
+  background-color: rgb(1, 153, 190);
+}
+
+.top-right-box {
+  height: 50%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: column;
+}
+
+.CameraContainer {
+  height: 90%;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #a8a8a8;
+  border-radius: 25px;
+}
+
+.bottom-right-box {
+  height: 50%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

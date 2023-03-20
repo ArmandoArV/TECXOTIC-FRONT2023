@@ -29,4 +29,4 @@ def extractText():
     #returns array with the 3 coral reef fish eDNA substrings
     return eDNA_array
 
-extractText()
+#extractText()

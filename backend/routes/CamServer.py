@@ -46,3 +46,4 @@ def screenshot(capture):
         status=200,
         mimetype='img/jpeg'
     )
+

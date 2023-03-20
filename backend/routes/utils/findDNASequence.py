@@ -161,7 +161,7 @@ tactttctttgaccctgcaggaggaggagacccaatcctttaccaacacctt
 }
 
 foundSpeciesArray = []
-eDNA_array = ['ggcattcccccgaatgaataacataagcttttgacttctccctccctcccttctccttcttctagcatccgctggggtagaagctggggccggaactggatgaacagtttacccacccctagcgggtaatctagc','cacgcattcgtaataattttctttatagtaataccaattatgattggtgggttcggaaattgattaattc']
+#eDNA_array = ['ggcattcccccgaatgaataacataagcttttgacttctccctccctcccttctccttcttctagcatccgctggggtagaagctggggccggaactggatgaacagtttacccacccctagcgggtaatctagc','cacgcattcgtaataattttctttatagtaataccaattatgattggtgggttcggaaattgattaattc']
 
 
 
@@ -187,4 +187,4 @@ def searchSpecies(eDNA_array):
     print(foundSpeciesArray)
     return foundSpeciesArray
 
-searchSpecies(eDNA_array)
+#searchSpecies(eDNA_array)

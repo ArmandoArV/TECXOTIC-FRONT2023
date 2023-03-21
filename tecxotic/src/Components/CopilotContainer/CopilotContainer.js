@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import Lateral from "../LateralNavbar/Lateral";
 import CameraProp from "../CameraProp/CameraProp";
+import comparatorContainer from "../ComparatorContainer/ComparatorContainer";
 import "./CopilotContainer.css";
+import ComparatorContainer from "../ComparatorContainer/ComparatorContainer";
 
 export default function CopilotContainer() {
   const cameras = [
@@ -20,6 +22,8 @@ export default function CopilotContainer() {
       <Lateral />
       <div className="camera-container">
         <div className="left-box">
+          <ComparatorContainer
+          />
         </div>
         <div className="right-box">
           <div className="top-right-box">

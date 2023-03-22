@@ -5,8 +5,7 @@ export default function ComparatorContainer(){
     return(
         <>
             <div className="comparatorContainer">
-                <div className="topContainer">
-                </div>
+                <div className="topContainer"></div>
                 <div className="topMediumContainer"></div> 
                 <div className="bottomContainer"></div>
                 <div className="squaresBox">

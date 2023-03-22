@@ -1,0 +1,28 @@
+.comparatorContainer {
+    height: 100vh;
+    display: flex;
+}
+
+.topContainer {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    margin-left: 5%;
+}
+
+.topMediumContainer {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 50%;
+    background-color: #fff;
+}
+
+.bottomContainer {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 50%;
+    background-color: #fff;
+}

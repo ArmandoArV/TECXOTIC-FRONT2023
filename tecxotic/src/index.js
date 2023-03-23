@@ -7,7 +7,12 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <App>
+    {/*CONTROL*/}
+    {/*script type="module" src="./Connection/Connection.js"></script*/}
+    <script type="module" src="./Control/Control.js"></script>
+
+    </App>
   </React.StrictMode>
 );
 

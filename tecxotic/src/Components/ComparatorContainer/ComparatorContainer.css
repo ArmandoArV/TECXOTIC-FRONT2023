@@ -1,8 +1,8 @@
 .comparatorContainer {
     height: 100vh;
     display: flex;
+    
 }
-
 .topContainer {
     display: flex;
     flex-direction: row;
@@ -11,18 +11,17 @@
     margin-left: 5%;
 }
 
-.topMediumContainer {
+.squaresBox {
     display: flex;
-    flex-direction: row;
-    height: 100%;
-    width: 50%;
-    background-color: #fff;
-}
-
-.bottomContainer {
-    display: flex;
-    flex-direction: row;
-    height: 100%;
-    width: 50%;
-    background-color: #fff;
-}
+    align-items: center;
+    justify-content: center;
+    background-color: var(--mid_dark_tecxotic);
+    border-radius: 25px;
+    margin-top: 80%;
+    margin-left: -90%;
+    padding: 5px;
+    height: 10%;
+    width: 90%;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  }
+  

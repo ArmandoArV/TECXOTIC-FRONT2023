@@ -7,6 +7,9 @@ export default function ComparatorContainer(){
         <>
             <div className="comparatorContainer">
                 <div className="topContainer">
+                    <button className="taskButton" onClick={""}>
+                        Start Monitoring
+                    </button>
                 </div>
                 <div className="topMediumContainer">
                     </div> 

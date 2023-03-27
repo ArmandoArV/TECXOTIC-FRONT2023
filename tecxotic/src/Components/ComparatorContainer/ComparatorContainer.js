@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import "./ComparatorContainer.css";
 import FileUploadButton from '../FileButtonComponent/FileButtonComponent';
 
-export default  function  ComparatorContainer (){
+export default function ComparatorContainer() {
     const [imageUrls, setImageUrls] = useState([]);
 
     const handleFileUpload = (file) => {

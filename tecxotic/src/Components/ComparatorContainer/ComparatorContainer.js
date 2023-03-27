@@ -16,7 +16,7 @@ const ComparatorContainer = () => {
     };
 
 
-export default function ComparatorContainer(){
+function ComparatorContainer(){
     const [squares,setSquares] = useState(0);
     return(
         <>
@@ -36,5 +36,8 @@ export default function ComparatorContainer(){
                 </div>
             </div>
         </>
-        )
-        };
+        );
+}
+}
+
+export default ComparatorContainer;

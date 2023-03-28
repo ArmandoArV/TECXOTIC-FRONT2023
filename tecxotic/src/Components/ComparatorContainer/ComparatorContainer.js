@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import "./ComparatorContainer.css";
-import FileUploadButton from '../FileButtonComponent/FileButtonComponent';
 
 export default function ComparatorContainer() {
-    const [imageUrls, setImageUrls] = useState([]);
+    const [imageUrls, setImageUrls] = useState(0);
 
     const handleFileUpload = (file) => {
         const reader = new FileReader();
@@ -21,14 +20,13 @@ export default function ComparatorContainer() {
         <>
             <div className="comparatorContainer">
                 <div className="topContainer">
-                    <button className="taskButton" onClick={""}>
+                    <button className="taskButton">
                         Start Monitoring
                     </button>
                 </div>
                 <div className="topMediumContainer">
                 </div>
                 <div className="bottomContainer">
-                    <FileUploadButton handleFileUpload={handleFileUpload} />
                 </div>
                 <div className="squaresBox">
                     <p>Squares recovered: {squares}</p>

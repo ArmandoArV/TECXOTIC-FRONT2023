@@ -1,0 +1,156 @@
+.comparatorContainer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 5%;
+}
+.topContainer {
+  display: flex;
+  flex-direction: row;
+  height: 15%;
+}
+
+.topMediumContainer {
+  display: flex;
+  flex-direction: row;
+  height: 70%;
+}
+
+.bottomContainer {
+  display: flex;
+  flex-direction: row;
+  height: 20%;
+}
+
+.photoContainerLeft {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  width: 50%;
+}
+
+.photoContainerLeftTop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50%;
+  width: 100%;
+}
+
+.Frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  height: 80%;
+  width: 80%;
+  border-radius: 20px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  margin-left: 3%;
+}
+
+.photoContainerLeftBottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--mid_blue_subnautica);
+  box-shadow:  0 0 10px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  height: 25%;
+  width: 60%;
+}
+
+.photoContainerRight {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  width: 50%;
+}
+
+.photoContainerRightTop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50%;
+  width: 100%;
+}
+
+.photoContainerRightBottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--mid_blue_subnautica);
+  box-shadow:  0 0 10px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  height: 25%;
+  width: 60%;
+}
+
+.taskStartContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.taskButton{
+  width: 30%;
+  height: 25%;
+  border-radius: 25px;
+  background-color: #86E642;
+  outline: none;
+  border: none;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 1.5em;
+}
+
+.taskButton:hover {
+  background-color: var(--dark_tecxotic);
+  cursor: pointer;
+}
+
+.squaresBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  background-color: var(--mid_dark_tecxotic);
+  height: 50%;
+  padding: 5px;
+  width: 90%;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  margin-left: 5%;
+  margin-top: 5%;
+}
+
+.squaresText {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+}
+
+.squaresText p{
+  font-size: 2em;
+  color: #fff;}
+
+.squaresNumber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--aqua_tecxotic);
+  border-radius: 10px;
+}
+
+.squaresNumber p{
+  font-size: 1.5em;
+  color: #fff;
+  padding: 0px 30px;
+}
+

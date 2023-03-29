@@ -6,6 +6,9 @@ import Comparator from "../ComparatorProp/Comparator";
 import Measure from "../MeasureProp/Measure";
 import "./Lateral.css";
 
+
+
+
 export default function LateralNavbar() {
   const arrayOfButtons = [
     {

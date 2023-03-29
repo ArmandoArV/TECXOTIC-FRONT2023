@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import "./ComparatorContainer.css";
 import CameraProp from "../CameraProp/CameraProp";
+import FileUploader from '../UploadFileButton/UploadFile';
+
 
 export default function ComparatorContainer() {
     const cameras = [
@@ -14,8 +16,19 @@ export default function ComparatorContainer() {
         }
     ];
 
-
+    const [sampleA, setSampleA] = useState(null);
+    const [sampleB, setSampleB] = useState(null);
     const [squares, setSquares] = useState(0);
+
+    const handleFileUploadSampleA = (uploadedFile) => {
+        setSampleA(URL.createObjectURL(uploadedFile));
+    };
+
+    const handleFileUploadSampleB = (uploadedFile) => {
+        setSampleB(URL.createObjectURL(uploadedFile));
+    };
+
+
     return (
         <>
             <div className="comparatorContainer">
@@ -30,36 +43,28 @@ export default function ComparatorContainer() {
                     <div className="photoContainerLeft">
                         <div className="photoContainerLeftTop">
                             <div className="Frame">
-                                <CameraProp
-                                    image={cameras[0].image}
-                                    idImg={cameras[0].idImg}
-                                    styles={{ width: "95%", height: "90%", borderRadius: "20px", padding: "15px"}}
-                                />
+                                <img className="imageSample" src={sampleA} alt="sampleA" />
                             </div>
                         </div>
                         <div className="photoContainerLeftBottom">
                             <div className="ButtonCompareContainer">
+                                <FileUploader onUpload={handleFileUploadSampleA} />
                             </div>
                         </div>
                     </div>
                     <div className="photoContainerRight">
                         <div className="photoContainerRightTop">
                             <div className="Frame">
-                                <CameraProp
-                                    image={cameras[1].image}
-                                    idImg={cameras[1].idImg}
-                                    styles={{ width: "95%", height: "90%", borderRadius: "20px", padding: "15px" }}
-                                />
+                                <img className='imageSample' src={sampleB} alt='sampleB' />
                             </div>
                         </div>
-
                         <div className="photoContainerRightBottom">
                             <div className="ButtonCompareContainer">
+                                <FileUploader onUpload={handleFileUploadSampleB} />
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <div className="bottomContainer">
                     <div className="squaresBox">
                         <div className="squaresText">

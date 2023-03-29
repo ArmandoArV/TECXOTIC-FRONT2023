@@ -55,7 +55,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #910707;
+  background-color: var(--mid_blue_subnautica);
+  box-shadow:  0 0 10px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
   height: 25%;
   width: 60%;
 }
@@ -81,7 +83,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #910707;
+  background-color: var(--mid_blue_subnautica);
+  box-shadow:  0 0 10px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
   height: 25%;
   width: 60%;
 }
@@ -98,7 +102,7 @@
   width: 30%;
   height: 25%;
   border-radius: 25px;
-  background-color: var(--dark_tecxotic);
+  background-color: #86E642;
   outline: none;
   border: none;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
@@ -107,7 +111,8 @@
 }
 
 .taskButton:hover {
-  background-color: var(--aqua_tecxotic);
+  background-color: var(--dark_tecxotic);
+  cursor: pointer;
 }
 
 .squaresBox {

@@ -25,11 +25,17 @@ export default function ComparatorContainer() {
                     </button>
                 </div>
                 <div className="topMediumContainer">
+                    <div className="photoContainerLeft">
+
+                    </div>
+                    <div className="photoContainerRight">
+                        
+                    </div>
                 </div>
                 <div className="bottomContainer">
-                </div>
-                <div className="squaresBox">
-                    <p>Squares recovered: {squares}</p>
+                    <div className="squaresBox">
+                        <p>Squares recovered: {squares}</p>
+                    </div>
                 </div>
             </div>
         </>

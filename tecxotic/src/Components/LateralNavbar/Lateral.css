@@ -6,6 +6,7 @@
     width: 8%;
     background-color: var(--mid_dark_tecxotic);
     position: fixed;
+    z-index: 999;
   }
   
   .Buttons-container {

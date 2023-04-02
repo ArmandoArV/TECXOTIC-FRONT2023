@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import Lateral from "../LateralNavbar/Lateral";
 import CameraProp from "../CameraProp/CameraProp";
-import comparatorContainer from "../ComparatorContainer/ComparatorContainer";
 import "./CopilotContainer.css";
-import ComparatorContainer from "../ComparatorContainer/ComparatorContainer";
 
 export default function CopilotContainer() {
   const cameras = [
@@ -17,13 +15,18 @@ export default function CopilotContainer() {
     }
   ];
 
+  const [selectedComponent, setSelectedComponent] = useState(null);
+
+  const handleSelectedComponent = (component) => {
+    setSelectedComponent(component);
+  };
+
   return (
     <div className="copilotContainer">
-      <Lateral />
+      <Lateral handleSelectedComponent={handleSelectedComponent} />
       <div className="camera-container">
         <div className="left-box">
-          <ComparatorContainer
-          />
+        {selectedComponent}
         </div>
         <div className="right-box">
           <div className="top-right-box">
@@ -49,21 +52,3 @@ export default function CopilotContainer() {
     </div>
   );
 }
-
-/*
-<CameraProp
-                image={cameras[0].image}
-                idImg={cameras[0].idImg}
-                styles={{width: "100%", height: "100%"}}
-              />
-
-
-
-
-              <CameraProp
-                image={cameras[1].image}
-                idImg={cameras[1].idImg}  
-                styles={cameras[1].styles}
-              />
-
-              */

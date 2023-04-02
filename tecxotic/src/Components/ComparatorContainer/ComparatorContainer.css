@@ -1,27 +1,31 @@
 .comparatorContainer {
   height: 100%;
+  width: 90%;
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
-  margin-left: 5%;
-}
+  margin-left: 2em;}
 .topContainer {
   display: flex;
   flex-direction: row;
   height: 15%;
+  width: 100%;
 }
-
 .topMediumContainer {
   display: flex;
   flex-direction: row;
   height: 70%;
+  width: 100%;
+  
 }
 
 .bottomContainer {
   display: flex;
   flex-direction: row;
   height: 20%;
+  width: 100%;
 }
-
 .photoContainerLeft {
   display: flex;
   align-items: center;
@@ -37,6 +41,8 @@
   justify-content: center;
   height: 50%;
   width: 100%;
+  text-align: center;
+
 }
 
 .Frame {
@@ -77,6 +83,8 @@
   justify-content: center;
   height: 50%;
   width: 100%;
+  text-align: center;
+
 }
 
 .photoContainerRightBottom {

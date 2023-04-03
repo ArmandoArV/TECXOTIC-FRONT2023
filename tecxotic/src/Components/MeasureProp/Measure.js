@@ -7,10 +7,15 @@ export default function Measure() {
     const [length, setLength] = useState(0);
     const [startMeasure, setStartMeasure] = useState(false);
 
+    const startMeasureHandler = () => {
+        setStartMeasure(true);
+        // Aqui ya veran que le meten pa medir
+    };
+
     return (
         <div className="measure-container">
             <div className="startMeasureContainer">
-                <button className="startMeasureButton">Start Measure</button>
+                <button className="startMeasureButton" onClick={startMeasureHandler}>Start Measure</button>
             </div>
             <div className="MeasuresContainer">
                 <div className="MedidasContainer">

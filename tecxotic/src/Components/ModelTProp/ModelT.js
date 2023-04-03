@@ -1,4 +1,5 @@
 import React from "react";
+import "./ModelT.css";
 
 export default function ModelT() {
     return (

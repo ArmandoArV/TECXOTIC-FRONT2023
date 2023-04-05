@@ -4,6 +4,7 @@ import CameraProp from "../CameraProp/CameraProp";
 import Gyro from "../Gyroscope/Gyro";
 import Navbar from "../NavBar/NavBar";
 import Crosshair from "../CrosshairProp/Crosshair";
+import { arrayOfCameras } from "../../Constants";
 
 function scale(number, inMin, inMax, outMin, outMax) {
     return (number - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
@@ -16,16 +17,7 @@ export default function PilotContainer(props) {
     const [yaw, setYaw] = useState(props.yaw);
     const dicOfCon = { wifi: props.wifiStatus, gamepad: props.gamepadStatus, flag: props.flagStatus, gear: props.gearStatus }
     const [connections, setConnections] = useState([dicOfCon.wifi, dicOfCon.gamepad, dicOfCon.flag, dicOfCon.gear]);
-    const cameras = [
-        {
-            image: "http://218.45.5.57:80/SnapshotJPEG?Resolution=640x480&amp;Quality=Clarity&amp;1674619720",
-            idImg: "Main1",
-        },
-        {
-            image: "http://158.58.130.148/mjpg/video.mjpg",
-            idImg: "Main1",
-        }
-    ];
+
 
     const handleCameraChange = () => {
         console.log('Active camera is ' + activeCamera);
@@ -47,9 +39,9 @@ export default function PilotContainer(props) {
         <>
             <div className="PilotCards-container">
                 <CameraProp
-                    image={cameras[activeCamera].image}
-                    idImg={cameras[activeCamera].idImg}
-                    styles={cameras[activeCamera].styles}
+                    image={arrayOfCameras[activeCamera].image}
+                    idImg={arrayOfCameras[activeCamera].idImg}
+                    styles={arrayOfCameras[activeCamera].styles}
                 />
                 <div className="Gyro-container">
                     <div className="staticHalfLine" >

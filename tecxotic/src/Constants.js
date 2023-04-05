@@ -13,3 +13,4 @@ export const arrayOfCameras = [
         idImg: "Main1",
       }
 ];
+

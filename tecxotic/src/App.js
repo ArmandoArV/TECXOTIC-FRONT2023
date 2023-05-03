@@ -1,27 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import PilotContainer from "./Components/PilotContainer/PilotContainer";
-import { useState, useEffect } from "react";
 import PilotPage from './Pages/Pilot/Pilot';
 import CoPilot from './Pages/Copilot/CopilotUI';
-
-function scale(number, inMin, inMax, outMin, outMax) {
-  return (number - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
-}
+import NotFound from './Pages/NotFound/NotFound';
 
 function App() {
-
   return (
     <div className="App">
-      <>
-      <Router>
+      <Router  basename="/projects/dos/admin/themes/b4/b4/build">
         <Routes>
           <Route path="/" element={<PilotPage/>} />
           <Route path="/copilot" element={<CoPilot/>} />
+          <Route path="*" element={<NotFound/>} />
         </Routes>
       </Router>
-      </>
     </div>
   );
 }

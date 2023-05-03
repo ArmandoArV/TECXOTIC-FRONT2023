@@ -36,7 +36,7 @@ export default function PilotContainer(props) {
     }, 50);
 
     return (
-        <>
+        <div className="PilotContainer">
             <div className="PilotCards-container">
                 <CameraProp
                     image={arrayOfCameras[activeCamera].image}
@@ -51,6 +51,6 @@ export default function PilotContainer(props) {
                 </div>
             </div>
             <Navbar changeCamera={handleCameraChange} connections={connections} />
-        </>
+        </div>
     );
 }

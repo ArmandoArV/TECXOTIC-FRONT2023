@@ -30,52 +30,50 @@ export default function ComparatorContainer() {
 
 
     return (
-        <>
-            <div className="comparatorContainer">
-                <div className="topContainer">
-                    <div className="taskStartContainer">
-                        <button className="taskButton">
-                            Start Monitoring
-                        </button>
-                    </div>
+        <div className="comparatorContainer">
+            <div className="topContainer">
+                <div className="taskStartContainer">
+                    <button className="taskButton">
+                        Start Monitoring
+                    </button>
                 </div>
-                <div className="topMediumContainer">
-                    <div className="photoContainerLeft">
-                        <div className="photoContainerLeftTop">
-                            <div className="Frame">
-                                <img className="imageSample" src={sampleA} alt="sampleA" />
-                            </div>
-                        </div>
-                        <div className="photoContainerLeftBottom">
-                            <div className="ButtonCompareContainer">
-                                <FileUploader onUpload={handleFileUploadSampleA} />
-                            </div>
+            </div>
+            <div className="topMediumContainer">
+                <div className="photoContainerLeft">
+                    <div className="photoContainerLeftTop">
+                        <div className="Frame">
+                            <img className="imageSample" src={sampleA} alt="sampleA" />
                         </div>
                     </div>
-                    <div className="photoContainerRight">
-                        <div className="photoContainerRightTop">
-                            <div className="Frame">
-                                <img className='imageSample' src={sampleB} alt='sampleB' />
-                            </div>
-                        </div>
-                        <div className="photoContainerRightBottom">
-                            <div className="ButtonCompareContainer">
-                                <FileUploader onUpload={handleFileUploadSampleB} />
-                            </div>
+                    <div className="photoContainerLeftBottom">
+                        <div className="ButtonCompareContainer">
+                            <FileUploader onUpload={handleFileUploadSampleA} />
                         </div>
                     </div>
                 </div>
-                <div className="bottomContainer">
-                    <div className="squaresBox">
-                        <div className="squaresText">
-                            <p>Number of squares: </p>
+                <div className="photoContainerRight">
+                    <div className="photoContainerRightTop">
+                        <div className="Frame">
+                            <img className='imageSample' src={sampleB} alt='sampleB' />
                         </div>
-                        <div className="squaresNumber">
-                            <p> {squares}</p>
+                    </div>
+                    <div className="photoContainerRightBottom">
+                        <div className="ButtonCompareContainer">
+                            <FileUploader onUpload={handleFileUploadSampleB} />
                         </div>
                     </div>
                 </div>
             </div>
-        </>
+            <div className="bottomContainer">
+                <div className="squaresBox">
+                    <div className="squaresText">
+                        <p>Number of squares: </p>
+                    </div>
+                    <div className="squaresNumber">
+                        <p> {squares}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     );
 }

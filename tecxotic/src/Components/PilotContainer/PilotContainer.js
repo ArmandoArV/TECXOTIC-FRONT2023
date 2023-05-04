@@ -22,7 +22,6 @@ export default function PilotContainer(props) {
     const handleCameraChange = () => {
         console.log('Active camera is ' + activeCamera);
         setActiveCamera(activeCamera === 1 ? 0 : 1);
-
     };
 
     setInterval(() => {

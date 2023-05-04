@@ -7,7 +7,7 @@ import NotFound from './Pages/NotFound/NotFound';
 function App() {
   return (
     <div className="App">
-      <Router  basename="/projects/dos/admin/themes/b4/b4/build">
+      <Router>
         <Routes>
           <Route path="/" element={<PilotPage/>} />
           <Route path="/copilot" element={<CoPilot/>} />

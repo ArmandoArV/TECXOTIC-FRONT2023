@@ -7,11 +7,11 @@ import FileUploader from '../UploadFileButton/UploadFile';
 export default function ComparatorContainer() {
     const cameras = [
         {
-            image: "http://218.45.5.57:80/SnapshotJPEG?Resolution=640x480&amp;Quality=Clarity&amp;1674619720",
+            image: "http://192.168.144.249:8080/video1",
             idImg: "Main1",
         },
         {
-            image: "http://158.58.130.148/mjpg/video.mjpg",
+            image: "http://192.168.144.249:8080/video1",
             idImg: "Main1",
         }
     ];

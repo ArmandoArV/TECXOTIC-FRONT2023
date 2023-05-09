@@ -7,15 +7,6 @@ import Crosshair from "../CrosshairProp/Crosshair";
 import { arrayOfCameras } from "../../Constants";
 import { socket_address} from "../../Constants";
 
-const commands_instance = {
-        throttle: 500,
-        roll: 0,
-        pitch: 0,
-        yaw: 0,
-        arm_disarm: true,
-        mode: 'MANUAL'
-}
-
 const RANGE=1000, NEUTRAL = 0
 const THROTTLE_RANGE=500, NEUTRAL_THROTTLE = 500
 
@@ -36,6 +27,14 @@ export default function PilotContainer(props) {
     const dicOfCon = { wifi: props.wifiStatus, gamepad: props.gamepadStatus, flag: props.flagStatus, gear: props.gearStatus }
     const [connections, setConnections] = useState([dicOfCon.wifi, dicOfCon.gamepad, dicOfCon.flag, dicOfCon.gear]);
     const [powerLimit, setPowerLimit] = useState(0.25);
+    const commands_instance = {
+        throttle: 500,
+        roll: 200,
+        pitch: 0,
+        yaw: 0,
+        arm_disarm: true,
+        mode: 'MANUAL'
+    }
 
     useEffect(() => {
     const wsClient = new WebSocket(socket_address);

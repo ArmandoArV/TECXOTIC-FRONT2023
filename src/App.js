@@ -1,8 +1,8 @@
+import React from "react";
 import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import PilotContainer from "./Components/PilotContainer/PilotContainer";
-import { useState, useEffect } from "react";
 import PilotPage from './Pages/Pilot/Pilot';
 import CoPilot from './Pages/Copilot/CopilotUI';
 

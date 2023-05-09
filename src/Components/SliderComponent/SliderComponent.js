@@ -8,6 +8,7 @@ export default function SliderComponent(props) {
         onChange={(e) => {
             const rangeVal = parseInt(e.target.value);
             setValue(rangeVal);
+            props.getSliderValue(rangeVal)
             props.onChange(rangeVal);
         }}
         type="range"

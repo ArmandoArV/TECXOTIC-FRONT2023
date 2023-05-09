@@ -38,7 +38,7 @@ const Navbar = (props) => {
                 <li><h2 className="SpeedContainer">Speed: {speed}</h2></li>
             </ol>
             <SVG name='gauge-simple'color="white"/>
-            <SliderComponent onChange={updateSpeed}/>
+            <SliderComponent onChange={updateSpeed} getSliderValue={props.getSliderValue}/>
 
         </div>
         <button className="ChangeCamera" onClick={props.changeCamera}><SVG name='camera-retro'color="white"/></button>

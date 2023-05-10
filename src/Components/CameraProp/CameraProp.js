@@ -5,4 +5,3 @@ export default function CameraProp(props) {
         <img src={props.image} alt="camera" id={props.idImg} style = {props.styles}/>
     );
 }
-

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { arrayOfCameras } from "../../Constants";
 import "./Measure.css";
 
 export default function Measure() {
@@ -12,10 +13,30 @@ export default function Measure() {
         // Aqui ya veran que le meten pa medir
     };
 
+    const takePicture = (camera) => {
+        console.log("TOMAR FOTO DE: ", camera.pictureMessage)
+        // 
+    }
+
     return (
         <div className="measure-container">
             <div className="startMeasureContainer">
-                <button className="startMeasureButton" onClick={startMeasureHandler}>Start Measure</button>
+                {
+                    arrayOfCameras.map((camera, index) => (
+                        <div 
+                            key={index}
+                            className="CameraContainer"
+                        >
+                            <button 
+                                className="startMeasureButton" 
+                                onClick={() => takePicture(camera)}
+                            >
+                                Camera: {camera.idImg}
+                            </button>
+                        </div>
+                    ))
+                }
+                {/* <button className="startMeasureButton" onClick={startMeasureHandler}>Start Measure</button> */}
             </div>
             <div className="MeasuresContainer">
                 <div className="MedidasContainer">

@@ -14,8 +14,17 @@ export default function Measure() {
     };
 
     const takePicture = (camera) => {
-        console.log("TOMAR FOTO DE: ", camera.pictureMessage)
-        // 
+        console.log("TAKING SCRENSHOT FROM: ", camera.pictureMessage)
+        // Screenshot example, note it only works for <img> tags
+        var video = document.getElementById(camera.idImg + "_view")
+        var canvas = document.createElement('canvas')
+        canvas.width = video.width;
+        canvas.height = video.height;
+        canvas.getContext('2d').drawImage(video, 0, 0);
+        var anchor = document.createElement("a");
+        anchor.href = canvas.toDataURL();
+        anchor.download = camera.idImg + "_view.jpg";
+        anchor.click()
     }
 
     return (
@@ -36,7 +45,6 @@ export default function Measure() {
                         </div>
                     ))
                 }
-                {/* <button className="startMeasureButton" onClick={startMeasureHandler}>Start Measure</button> */}
             </div>
             <div className="MeasuresContainer">
                 <div className="MedidasContainer">

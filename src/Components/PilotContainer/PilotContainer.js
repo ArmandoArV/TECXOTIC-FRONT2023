@@ -101,7 +101,7 @@ export default function PilotContainer(props) {
         <>
             <div className="PilotCards-container">
                 <CameraProp
-                    image={arrayOfCameras[activeCamera].image}
+                    src={arrayOfCameras[activeCamera].image}
                     idImg={arrayOfCameras[activeCamera].idImg}
                     styles={arrayOfCameras[activeCamera].styles}
                 />

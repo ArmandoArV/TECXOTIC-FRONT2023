@@ -14,10 +14,6 @@ function scale(number, inMin, inMax, outMin, outMax) {
     return (number - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
 }
 
-const calculatePotency = (joystick) =>{
-   return parseInt((joystick * RANGE) + NEUTRAL)
-}
-
 export default function PilotContainer(props) {
     const [ws, setWs] = useState(null);
     const [activeCamera, setActiveCamera] = useState(1);
@@ -26,7 +22,7 @@ export default function PilotContainer(props) {
     const [yaw, setYaw] = useState(props.yaw);
     const dicOfCon = { wifi: props.wifiStatus, gamepad: props.gamepadStatus, flag: props.flagStatus, gear: props.gearStatus }
     const [connections, setConnections] = useState([dicOfCon.wifi, dicOfCon.gamepad, dicOfCon.flag, dicOfCon.gear]);
-    const [powerLimit, setPowerLimit] = useState(0.25);
+    const [powerLimit, setPowerLimit] = useState(1);
     const commands_instance = {
         throttle: 500,
         roll: 0,
@@ -35,6 +31,10 @@ export default function PilotContainer(props) {
         arm_disarm: true,
         mode: 'MANUAL',
         arduino: 0
+    }
+
+    const calculatePotency = (joystick) =>{
+        return parseInt((joystick * RANGE) * powerLimit)
     }
 
     useEffect(() => {
@@ -58,7 +58,7 @@ export default function PilotContainer(props) {
     }, []);
 
     const getSliderValue = (element) => {
-        setPowerLimit((element / 100)*1.85);
+        setPowerLimit((element / 100));
     }
 
     const handleCameraChange = () => {

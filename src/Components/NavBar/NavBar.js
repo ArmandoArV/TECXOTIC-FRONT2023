@@ -6,7 +6,7 @@ import SVG from '../SVGProp/SVG';
 import PropTypes from 'prop-types';
 
 const Navbar = (props) => {
-  const [speed, setSpeed] = useState(0);
+  const [speed, setSpeed] = useState(100);
 
   const updateSpeed = (newSpeed) => {
       setSpeed(newSpeed);

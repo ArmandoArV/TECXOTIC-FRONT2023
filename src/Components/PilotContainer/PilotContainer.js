@@ -29,11 +29,12 @@ export default function PilotContainer(props) {
     const [powerLimit, setPowerLimit] = useState(0.25);
     const commands_instance = {
         throttle: 500,
-        roll: 200,
+        roll: 0,
         pitch: 0,
         yaw: 0,
         arm_disarm: true,
-        mode: 'MANUAL'
+        mode: 'MANUAL',
+        arduino: 0
     }
 
     useEffect(() => {
@@ -57,7 +58,7 @@ export default function PilotContainer(props) {
     }, []);
 
     const getSliderValue = (element) => {
-        setPowerLimit((element / 100)*1.2);
+        setPowerLimit((element / 100)*1.85);
     }
 
     const handleCameraChange = () => {
@@ -72,11 +73,31 @@ export default function PilotContainer(props) {
             const safeZone = 0.012;
             
 
-            const lx = gamepads[0].axes[0] * powerLimit;
-            const ly = gamepads[0].axes[1] * powerLimit;
+            const lx = gamepads[0].axes[0];
+            const ly = gamepads[0].axes[1];
 
-            const rx = gamepads[0].axes[2] * powerLimit;
-            const ry = gamepads[0].axes[3] * powerLimit;
+            const rx = gamepads[0].axes[2];
+            const ry = gamepads[0].axes[3];
+
+            if (gamepads[0].buttons[0].value > 0 || gamepads[0].buttons[0].pressed) {
+                //x
+                commands_instance.arduino = 2;
+            }
+            else if (gamepads[0].buttons[1].value > 0 || gamepads[0].buttons[1].pressed) {
+                //circle
+                commands_instance.arduino = 4;
+            }
+            else if (gamepads[0].buttons[2].value > 0 || gamepads[0].buttons[2].pressed) {
+                //square
+                commands_instance.arduino = 3;
+            }
+            else if (gamepads[0].buttons[3].value > 0 || gamepads[0].buttons[3].pressed) {
+                //triangle
+                commands_instance.arduino = 1;
+            }
+            else{
+                commands_instance.arduino = 0;
+            }
 
             if(ly > safeZone || ly < -safeZone){
                 commands_instance.throttle = parseInt((-ly * THROTTLE_RANGE) + NEUTRAL_THROTTLE)
@@ -91,9 +112,9 @@ export default function PilotContainer(props) {
             
             //console.log({throttle: commands_instance.throttle,  yaw: commands_instance.yaw , pitch: commands_instance.pitch, roll: commands_instance.roll})
             //console.log(commands_instance.roll);
-            setYaw(scale(gamepads[0].axes[2], -1, 1, 180, 0).toFixed());
-            setPitch(scale(gamepads[0].axes[3], -1, 1, 180, 0).toFixed());
-            setRotation(scale(gamepads[0].axes[0], -1, 1, 180, 0).toFixed());
+            setYaw( ( rx > safeZone || rx < -safeZone) ? scale(gamepads[0].axes[2], -1, 1, 180, 0).toFixed() : NEUTRAL);
+            setPitch( ( ry > safeZone || ry < -safeZone) ? scale(gamepads[0].axes[3], -1, 1, 180, 0).toFixed() : NEUTRAL);
+            setRotation( (lx > safeZone || lx < -safeZone) ? scale(gamepads[0].axes[0], -1, 1, 180, 0).toFixed() : NEUTRAL);
         }
     }, 50);
 

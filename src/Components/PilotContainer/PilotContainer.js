@@ -112,9 +112,9 @@ export default function PilotContainer(props) {
             
             //console.log({throttle: commands_instance.throttle,  yaw: commands_instance.yaw , pitch: commands_instance.pitch, roll: commands_instance.roll})
             //console.log(commands_instance.roll);
-            setYaw( ( rx > safeZone || rx < -safeZone) ? scale(gamepads[0].axes[2], -1, 1, 180, 0).toFixed() : NEUTRAL);
-            setPitch( ( ry > safeZone || ry < -safeZone) ? scale(gamepads[0].axes[3], -1, 1, 180, 0).toFixed() : NEUTRAL);
-            setRotation( (lx > safeZone || lx < -safeZone) ? scale(gamepads[0].axes[0], -1, 1, 180, 0).toFixed() : NEUTRAL);
+            setYaw(scale(gamepads[0].axes[2], -1, 1, 180, 0).toFixed());
+            setPitch(scale(gamepads[0].axes[3], -1, 1, 180, 0).toFixed());
+            setRotation(scale(gamepads[0].axes[0], -1, 1, 180, 0).toFixed());
         }
     }, 50);
 

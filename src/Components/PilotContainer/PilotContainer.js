@@ -22,7 +22,7 @@ export default function PilotContainer(props) {
     const [yaw, setYaw] = useState(props.yaw);
     const dicOfCon = { wifi: props.wifiStatus, gamepad: props.gamepadStatus, flag: props.flagStatus, gear: props.gearStatus }
     const [connections, setConnections] = useState([dicOfCon.wifi, dicOfCon.gamepad, dicOfCon.flag, dicOfCon.gear]);
-    const [powerLimit, setPowerLimit] = useState(1);
+    const [powerLimit, setPowerLimit] = useState(1.0);
     const commands_instance = {
         throttle: 500,
         roll: 0,
@@ -33,8 +33,11 @@ export default function PilotContainer(props) {
         arduino: 0
     }
 
+    let modes = 'MANUAL';
+
     const calculatePotency = (joystick) =>{
-        return parseInt((joystick * RANGE) * powerLimit)
+        console.log(powerLimit);
+        return parseInt(joystick * RANGE)
     }
 
     useEffect(() => {
@@ -58,7 +61,7 @@ export default function PilotContainer(props) {
     }, []);
 
     const getSliderValue = (element) => {
-        setPowerLimit((element / 100));
+        setPowerLimit((element * 1.0 / 100));
     }
 
     const handleCameraChange = () => {
@@ -71,13 +74,19 @@ export default function PilotContainer(props) {
         const gamepads = navigator.getGamepads();
         if (gamepads && gamepads[0]) {
             const safeZone = 0.012;
-            
 
             const lx = gamepads[0].axes[0];
             const ly = gamepads[0].axes[1];
 
             const rx = gamepads[0].axes[2];
             const ry = gamepads[0].axes[3];
+
+            commands_instance.yaw = ( rx > safeZone || rx < -safeZone) ? calculatePotency(rx): NEUTRAL
+            commands_instance.pitch = ( ry > safeZone || ry < -safeZone) ? calculatePotency(-ry): NEUTRAL
+            commands_instance.roll = (lx > safeZone || lx < -safeZone) ? calculatePotency(lx): NEUTRAL
+            setYaw(scale(gamepads[0].axes[2], -1, 1, 180, 0).toFixed());
+            setPitch(scale(gamepads[0].axes[3], -1, 1, 180, 0).toFixed());
+            setRotation(scale(gamepads[0].axes[0], -1, 1, 180, 0).toFixed());
 
             if (gamepads[0].buttons[0].value > 0 || gamepads[0].buttons[0].pressed) {
                 //x
@@ -105,19 +114,22 @@ export default function PilotContainer(props) {
             else{
                 commands_instance.throttle = NEUTRAL_THROTTLE;
             }
-            
-            commands_instance.yaw = ( rx > safeZone || rx < -safeZone) ? calculatePotency(rx) : NEUTRAL
-            commands_instance.pitch = ( ry > safeZone || ry < -safeZone) ? calculatePotency(-ry) : NEUTRAL
-            commands_instance.roll = (lx > safeZone || lx < -safeZone) ? calculatePotency(lx) : NEUTRAL
-            
-            //console.log({throttle: commands_instance.throttle,  yaw: commands_instance.yaw , pitch: commands_instance.pitch, roll: commands_instance.roll})
-            //console.log(commands_instance.roll);
-            setYaw(scale(gamepads[0].axes[2], -1, 1, 180, 0).toFixed());
-            setPitch(scale(gamepads[0].axes[3], -1, 1, 180, 0).toFixed());
-            setRotation(scale(gamepads[0].axes[0], -1, 1, 180, 0).toFixed());
-        }
-    }, 50);
 
+            if (gamepads[0].buttons[14].pressed){
+                //left
+                modes = 'MANUAL';
+            }
+            else if( gamepads[0].buttons[12].pressed){
+                //up
+                modes = 'STABILIZE';
+            }
+            else if(gamepads[0].buttons[13].pressed){
+                //up
+                modes = 'ACRO';
+            }
+            commands_instance.mode = modes;
+        }
+    }, 10);
     return (
         <>
             <div className="PilotCards-container">

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./SliderComponent.css";
 
 export default function SliderComponent(props) {
-    const [value, setValue] = useState(100);
+    const [value, setValue] = useState(1000);
     return (
         <input
         onChange={(e) => {
@@ -13,7 +13,7 @@ export default function SliderComponent(props) {
         }}
         type="range"
         min={0}
-        max={100}
+        max={1000}
         value={value}
         className="range"
         id="myRange"

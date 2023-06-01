@@ -22,7 +22,7 @@ export default function PilotContainer(props) {
     const [yaw, setYaw] = useState(props.yaw);
     const dicOfCon = { wifi: props.wifiStatus, gamepad: props.gamepadStatus, flag: props.flagStatus, gear: props.gearStatus }
     const [connections, setConnections] = useState([dicOfCon.wifi, dicOfCon.gamepad, dicOfCon.flag, dicOfCon.gear]);
-    const [powerLimit, setPowerLimit] = useState(1.0);
+    const [powerLimit, setPowerLimit] = useState(1000);
     const commands_instance = {
         throttle: 500,
         roll: 0,
@@ -36,8 +36,7 @@ export default function PilotContainer(props) {
     let modes = 'MANUAL';
 
     const calculatePotency = (joystick) =>{
-        console.log(powerLimit);
-        return parseInt(joystick * RANGE)
+        return parseInt(joystick * RANGE);
     }
 
     useEffect(() => {
@@ -61,7 +60,7 @@ export default function PilotContainer(props) {
     }, []);
 
     const getSliderValue = (element) => {
-        setPowerLimit((element * 1.0 / 100));
+        setPowerLimit(element);
     }
 
     const handleCameraChange = () => {
@@ -74,14 +73,13 @@ export default function PilotContainer(props) {
         const gamepads = navigator.getGamepads();
         if (gamepads && gamepads[0]) {
             const safeZone = 0.012;
-
             const lx = gamepads[0].axes[0];
             const ly = gamepads[0].axes[1];
 
             const rx = gamepads[0].axes[2];
             const ry = gamepads[0].axes[3];
 
-            commands_instance.yaw = ( rx > safeZone || rx < -safeZone) ? calculatePotency(rx): NEUTRAL
+            commands_instance.yaw = ( rx > safeZone || rx < -safeZone) ? parseInt(calculatePotency(rx) * 0.3): NEUTRAL
             commands_instance.pitch = ( ry > safeZone || ry < -safeZone) ? calculatePotency(-ry): NEUTRAL
             commands_instance.roll = (lx > safeZone || lx < -safeZone) ? calculatePotency(lx): NEUTRAL
             setYaw(scale(gamepads[0].axes[2], -1, 1, 180, 0).toFixed());

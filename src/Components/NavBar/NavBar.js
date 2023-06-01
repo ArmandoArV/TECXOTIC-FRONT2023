@@ -6,7 +6,7 @@ import SVG from '../SVGProp/SVG';
 import PropTypes from 'prop-types';
 
 const Navbar = ({connections, changeCamera, getSliderValue}) => {
-  const [speed, setSpeed] = useState(100);
+  const [speed, setSpeed] = useState(1000);
 
   const updateSpeed = (newSpeed) => {
       setSpeed(newSpeed);

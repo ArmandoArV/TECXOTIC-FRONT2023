@@ -79,7 +79,7 @@ export default function PilotContainer(props) {
             const rx = gamepads[0].axes[2];
             const ry = gamepads[0].axes[3];
 
-            commands_instance.yaw = ( rx > safeZone || rx < -safeZone) ? parseInt(calculatePotency(rx) * 0.3): NEUTRAL
+            commands_instance.yaw = ( rx > safeZone || rx < -safeZone) ? parseInt(calculatePotency(rx)): NEUTRAL
             commands_instance.pitch = ( ry > safeZone || ry < -safeZone) ? calculatePotency(-ry): NEUTRAL
             commands_instance.roll = (lx > safeZone || lx < -safeZone) ? calculatePotency(lx): NEUTRAL
             setYaw(scale(gamepads[0].axes[2], -1, 1, 180, 0).toFixed());

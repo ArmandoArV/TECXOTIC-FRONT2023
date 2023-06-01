@@ -88,7 +88,7 @@ export default function PilotContainer(props) {
 
             if (gamepads[0].buttons[0].value > 0 || gamepads[0].buttons[0].pressed) {
                 //x
-                commands_instance.arduino = 2;
+                commands_instance.arduino = 1;
             }
             else if (gamepads[0].buttons[1].value > 0 || gamepads[0].buttons[1].pressed) {
                 //circle
@@ -100,7 +100,7 @@ export default function PilotContainer(props) {
             }
             else if (gamepads[0].buttons[3].value > 0 || gamepads[0].buttons[3].pressed) {
                 //triangle
-                commands_instance.arduino = 1;
+                commands_instance.arduino = 2;
             }
             else{
                 commands_instance.arduino = 0;

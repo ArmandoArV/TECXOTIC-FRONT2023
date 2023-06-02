@@ -21,24 +21,20 @@ export default function CopilotContainer() {
         {selectedComponent}
         </div>
         <div className="right-box">
-          <div className="top-right-box">
-            <div className="CameraContainer">
-              <CameraProp
-                image={arrayOfCameras[0].image}
-                idImg={arrayOfCameras[0].idImg}
-                styles={{ width: "95%", height: "95%", borderRadius: "25px" }}
-              />
-            </div>
-          </div>
-          <div className="bottom-right-box">
-            <div className="CameraContainer">
-              <CameraProp
-                image={arrayOfCameras[0].image}
-                idImg={arrayOfCameras[0].idImg}
-                styles={{ width: "95%", height: "95%", borderRadius: "25px" }}
-              />
-            </div>
-          </div>
+          {
+            arrayOfCameras.map(camera => (
+              <div 
+                key={camera.idImg}
+                className="CameraContainer"
+              >
+                <CameraProp
+                  idImg={camera.idImg}
+                  src={camera.image}
+                  styles={{ width: "95%", height: "95%", borderRadius: "25px" }}
+                />
+              </div>
+            ))
+          }
         </div>
       </div>
     </div>

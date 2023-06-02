@@ -26,8 +26,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50%;
-  height: 50%;
   border-radius: 10px;
   background-color: var(--mid_blue_subnautica);
   outline: none;

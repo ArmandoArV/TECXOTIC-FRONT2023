@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import SVG from "../SVGProp/SVG";
 import ModelT from "../ModelTProp/ModelT";
 import DNA from "../DNAProp/DNA";
@@ -6,51 +6,55 @@ import Measure from "../MeasureProp/Measure";
 import ComparatorContainer from "../ComparatorContainer/ComparatorContainer";
 import "./Lateral.css";
 
+const arrayOfButtons = [
+  {
+    name: "Measure",
+    icon: "ruler",
+  },
+  {
+    name: "3D Model",
+    icon: "folder-plus",
+  },
+  {
+    name: "eDNA",
+    icon: "flask",
+  },
+  {
+    name: "Comparator",
+    icon: "chart-bar",
+  },
+];
+
 export default function LateralNavbar(props) {
-  const arrayOfButtons = [
-    {
-      name: "Measure",
-      icon: "ruler",
-    },
-    {
-      name: "3D Model",
-      icon: "folder-plus",
-    },
-    {
-      name: "eDNA",
-      icon: "flask",
-    },
-    {
-      name: "Comparator",
-      icon: "chart-bar",
-    },
-  ];
+  let { handleSelectedComponent } = props;
+  const [activeTab, setActiveTab] = useState('')
 
   const handleSelectedButton = useCallback((button) => {
+    setActiveTab(button.name);
     switch (button.name) {
       case "Measure":
-        props.handleSelectedComponent(<Measure />);
+        handleSelectedComponent(<Measure />);
         break;
       case "3D Model":
-        props.handleSelectedComponent(<ModelT />);
+        handleSelectedComponent(<ModelT />);
         break;
       case "eDNA":
-        props.handleSelectedComponent(<DNA />);
+        handleSelectedComponent(<DNA />);
         break;
       case "Comparator":
-        props.handleSelectedComponent(<ComparatorContainer />);
+        handleSelectedComponent(<ComparatorContainer />);
         break;
       default:
-        props.handleSelectedComponent(<ComparatorContainer />);
+        handleSelectedComponent(<ComparatorContainer />);
     }
-  }, [props.handleSelectedComponent]);
+  }, [handleSelectedComponent]);
 
   return (
     <div className="lateralNavbar">
       <div className="Buttons-container">
         {arrayOfButtons.map((button, index) => (
           <button
-            className="button"
+            className={`button ${activeTab === button.name ? 'active' : ''}`}
             key={index}
             onClick={() => handleSelectedButton(button)}
           >

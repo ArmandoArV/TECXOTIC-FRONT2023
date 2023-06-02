@@ -4,9 +4,6 @@ import { socket_address } from "../../Constants";
 
 
 export default function PilotPage() {
-
-
-
     const [wifiStatus, setWifiStatus] = useState(true);
     const [gamepadStatus, setGamepadStatus] = useState(true);
     const [flagStatus, setFlagStatus] = useState(false);
@@ -15,11 +12,15 @@ export default function PilotPage() {
     const [pitch, setPitch] = useState(0);
     const [yaw, setYaw] = useState(90);
 
-
-
     return (
-        <>
-            <PilotContainer wifiStatus={wifiStatus} gamepadStatus={gamepadStatus} flagStatus={flagStatus} gearStatus={gearStatus} rotation={rotation} pitch={pitch} yaw={yaw} />
-        </>
+        <PilotContainer 
+            wifiStatus={wifiStatus} 
+            gamepadStatus={gamepadStatus} 
+            flagStatus={flagStatus} 
+            gearStatus={gearStatus} 
+            rotation={rotation} 
+            pitch={pitch} 
+            yaw={yaw} 
+        />
     );
 }

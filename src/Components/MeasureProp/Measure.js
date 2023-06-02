@@ -9,7 +9,10 @@ export default function Measure() {
     const [startMeasure, setStartMeasure] = useState(false);
 
     const takePicture = (camera) => {
-        
+        var anchor = document.createElement("a");
+        anchor.href = camera.image;
+        anchor.download = camera.idImg + ".jpg";
+        anchor.click()
     }
 
 

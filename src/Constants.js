@@ -9,8 +9,8 @@ export const arrayOfCameras = [
         idImg: "Main1",
       },
       {
-        image: `${flask_address}/video1`,
-        idImg: "Main1",
+        image: `${flask_address}/video2`,
+        idImg: "Main2",
       }
 ];
 

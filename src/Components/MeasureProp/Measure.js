@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { arrayOfCameras } from "../../Constants";
 import "./Measure.css";
 
 export default function Measure() {
@@ -7,15 +8,32 @@ export default function Measure() {
     const [length, setLength] = useState(0);
     const [startMeasure, setStartMeasure] = useState(false);
 
-    const startMeasureHandler = () => {
-        setStartMeasure(true);
-        // Aqui ya veran que le meten pa medir
-    };
+    const takePicture = (camera) => {
+        var anchor = document.createElement("a");
+        anchor.href = camera.image;
+        anchor.download = camera.idImg + ".jpg";
+        anchor.click()
+    }
+
 
     return (
         <div className="measure-container">
             <div className="startMeasureContainer">
-                <button className="startMeasureButton" onClick={startMeasureHandler}>Start Measure</button>
+                {
+                    arrayOfCameras.map((camera, index) => (
+                        <div 
+                            key={index}
+                            className="CameraContainer"
+                        >
+                            <button 
+                                className="startMeasureButton" 
+                                onClick={() => takePicture(camera)}
+                            >
+                                Take photo from: {camera.idImg}
+                            </button>
+                        </div>
+                    ))
+                }
             </div>
             <div className="MeasuresContainer">
                 <div className="MedidasContainer">

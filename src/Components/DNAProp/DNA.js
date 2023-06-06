@@ -10,6 +10,7 @@ export default function DNA() {
     const [getDNASampleNameB, setDNASampleNameB] = useState("PEZ B");
     const [getDNASampleC, setDNASampleC] = useState("");
     const [getDNASampleNameC, setDNASampleNameC] = useState("PEZ C");
+    const [getDNASamples, setDNASamples] = useState([getDNASampleA, getDNASampleB, getDNASampleC]);
 
     return (
         <>
@@ -36,11 +37,6 @@ export default function DNA() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="bottomAnalysisContainer">
-                                <div className="fileUploaderContainer">
-                                    <FileUploader onUpload={setDNASampleA} />
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div className="DNAContainerFrame">
@@ -57,11 +53,6 @@ export default function DNA() {
                                     <div className="bottomSampleMatchedContainer">
                                         <h1 className="sampleName">{getDNASampleNameB}</h1>
                                     </div>
-                                </div>
-                            </div>
-                            <div className="bottomAnalysisContainer">
-                                <div className="fileUploaderContainer">
-                                    <FileUploader onUpload={setDNASampleB} />
                                 </div>
                             </div>
                         </div>
@@ -82,12 +73,12 @@ export default function DNA() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="bottomAnalysisContainer">
-                                <div className="fileUploaderContainer">
-                                    <FileUploader onUpload={setDNASampleC} />
-                                </div>
-                            </div>
                         </div>
+                    </div>
+                    <div className="bottomAnalysisContainer">
+                                <div className="fileUploaderContainer">
+                                    <FileUploader onUpload={setDNASamples} />
+                                </div>
                     </div>
                 </div>
 

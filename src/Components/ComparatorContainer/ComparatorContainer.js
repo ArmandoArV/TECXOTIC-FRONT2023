@@ -2,7 +2,14 @@ import React, { useState } from 'react';
 import "./ComparatorContainer.css";
 import CameraProp from "../CameraProp/CameraProp";
 import FileUploader from '../UploadFileButton/UploadFile';
+import { arrayOfCameras } from '../../Constants';
 
+const takePicture = (camera) => {
+    var anchor = document.createElement("a");
+    anchor.href = camera.image;
+    anchor.download = camera.idImg + ".jpg";
+    anchor.click()
+}
 
 export default function ComparatorContainer() {
     const cameras = [
@@ -60,7 +67,21 @@ export default function ComparatorContainer() {
                         </div>
                         <div className="photoContainerRightBottom">
                             <div className="ButtonCompareContainer">
-                                <FileUploader onUpload={handleFileUploadSampleB} />
+                            {
+                                arrayOfCameras.map((camera, index) => (
+                                    <div 
+                                        key={index}
+                                        className="CameraContainer"
+                                    >
+                                        <button 
+                                            className="startMeasureButton" 
+                                            onClick={() => takePicture(camera)}
+                                        >
+                                            Take photo from: {camera.idImg}
+                                        </button>
+                                    </div>
+                                ))
+                            }
                             </div>
                         </div>
                     </div>

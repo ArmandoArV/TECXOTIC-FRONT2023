@@ -7,8 +7,8 @@ nav {
     top: 0;
     left: 0; /* adds left property */
     z-index: 999; /* increases z-index to ensure navbar is on top */
-    padding: 10px 20px; /* adds padding */
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    height: 5em;
     background-color: var(--mid_dark_tecxotic);
 
   }
@@ -41,13 +41,13 @@ nav {
 
   
   .nav-links .Indicators-List li img {
-    width: 30px;
-    height: 30px;
-    margin: 0 10px;
+    width: 10em;
+    height: 10em;
+    margin: 0 5em;
 }
 
 .nav-links .Indicators-List .SpeedContainer{
-  font-size: 1rem;
+  font-size: 0.8rem;
   color: #fff;
   font-weight: 100;
   text-shadow: 0 0 20px rgba(0,0,0,0.2);
@@ -66,8 +66,6 @@ nav button{
 }
 
 nav button:hover{
-
   cursor: pointer;
-
 }
 

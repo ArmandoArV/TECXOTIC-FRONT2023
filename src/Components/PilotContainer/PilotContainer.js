@@ -80,7 +80,7 @@ export default function PilotContainer(props) {
             const ry = gamepads[0].axes[3];
 
             commands_instance.yaw = ( rx > safeZone || rx < -safeZone) ? parseInt(calculatePotency(rx)): NEUTRAL
-            commands_instance.pitch = ( ry > safeZone || ry < -safeZone) ? calculatePotency(-ry): NEUTRAL
+            commands_instance.pitch = ( ly > safeZone || ly < -safeZone) ? calculatePotency(-ly): NEUTRAL
             commands_instance.roll = (lx > safeZone || lx < -safeZone) ? calculatePotency(lx): NEUTRAL
             setYaw(scale(gamepads[0].axes[2], -1, 1, 180, 0).toFixed());
             setPitch(scale(gamepads[0].axes[3], -1, 1, 180, 0).toFixed());
@@ -106,8 +106,8 @@ export default function PilotContainer(props) {
                 commands_instance.arduino = 0;
             }
 
-            if(ly > safeZone || ly < -safeZone){
-                commands_instance.throttle = parseInt((-ly * THROTTLE_RANGE) + NEUTRAL_THROTTLE)
+            if(ry > safeZone || ry < -safeZone){
+                commands_instance.throttle = parseInt((-ry * THROTTLE_RANGE) + NEUTRAL_THROTTLE)
             }
             else{
                 commands_instance.throttle = NEUTRAL_THROTTLE;

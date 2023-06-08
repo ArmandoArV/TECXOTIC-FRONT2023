@@ -23,7 +23,7 @@ export default function Measure() {
                     arrayOfCameras.map((camera, index) => (
                         <div 
                             key={index}
-                            className="CameraContainer"
+                            className="butContainer"
                         >
                             <button 
                                 className="startMeasureButton" 

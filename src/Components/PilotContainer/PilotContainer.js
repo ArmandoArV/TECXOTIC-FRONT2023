@@ -1,4 +1,4 @@
-import React, { useState , useEffect} from "react";
+import React, { useState , useEffect, useRef} from "react";
 import "./PilotContainer.css";
 import CameraProp from "../CameraProp/CameraProp";
 import Gyro from "../Gyroscope/Gyro";
@@ -22,112 +22,141 @@ export default function PilotContainer(props) {
     const [yaw, setYaw] = useState(props.yaw);
     const dicOfCon = { wifi: props.wifiStatus, gamepad: props.gamepadStatus, flag: props.flagStatus, gear: props.gearStatus }
     const [connections, setConnections] = useState([dicOfCon.wifi, dicOfCon.gamepad, dicOfCon.flag, dicOfCon.gear]);
-    const [powerLimit, setPowerLimit] = useState(1000);
-    const commands_instance = {
-        throttle: 500,
-        roll: 0,
-        pitch: 0,
-        yaw: 0,
-        arm_disarm: true,
-        mode: 'MANUAL',
-        arduino: 0
-    }
+    const [powerLimit, setPowerLimit] = useState(1.0);
+    const powerLimitRef = useRef();
+    powerLimitRef.current = powerLimit;
+    const [counter, setCounter] = useState(0);
 
     let modes = 'MANUAL';
 
     const calculatePotency = (joystick) =>{
-        return parseInt(joystick * RANGE);
+        return parseInt(joystick * RANGE * powerLimitRef.current);
+    }
+
+    const calculateThrottlePotency = (joystick) =>{
+        return parseInt((-joystick * THROTTLE_RANGE) * powerLimitRef.current + NEUTRAL_THROTTLE);
     }
 
     useEffect(() => {
-    const wsClient = new WebSocket(socket_address);
-    wsClient.onopen = () => {
-      setWs(wsClient);
-      wsClient.send(JSON.stringify(commands_instance));
-    };
+        if(counter===0){
+            const wsClient = new WebSocket(socket_address);
 
-    wsClient.onmessage = (event) => {
-        wsClient.send(JSON.stringify(commands_instance))
-    }
+            wsClient.onopen = () => {
+                setWs(wsClient);
+                const start_commands_instance = {
+                    throttle: 500,
+                    roll: 0,
+                    pitch: 0,
+                    yaw: 0,
+                    arm_disarm: true,
+                    mode: 'MANUAL',
+                    arduino: 0,
+                }
+                ws.send(JSON.stringify(start_commands_instance));
+                setCounter(counter+1);
+            };
+        }
+        
+    })
 
-    wsClient.onclose = () => {
-        console.log('Connection Closed');
-    };
+    useEffect(() => {
+        const interval = setInterval((tempPowerLimit) => {
 
-    wsClient.onerror = (error) => {
-        alert(`[error] ${error.message}`);
-    };
-    }, []);
+            let commands_yaw = 0;
+            let commands_pitch = 0;
+            let commands_roll = 0;
+            let commands_throttle = 500;
+            let commands_arduino = 0;
+            let commands_mode = 'MANUAL';
+
+            const gamepads = navigator.getGamepads();
+            if (gamepads && gamepads[0]) {
+                const safeZone = 0.012;
+                //let trigger = false;
+                /*if(gamepads[0].buttons[4].pressed){
+                    trigger = true;
+                }*/
+
+                const lx = gamepads[0].axes[0];
+                const ly = gamepads[0].axes[1];
+
+                const rx = gamepads[0].axes[2];
+                const ry = gamepads[0].axes[3];
+
+                commands_yaw = ( rx > safeZone || rx < -safeZone) ? parseInt(calculatePotency(rx)): NEUTRAL
+                commands_pitch = ( ly > safeZone || ly < -safeZone) ? calculatePotency(-ly): NEUTRAL
+                commands_roll = (lx > safeZone || lx < -safeZone) ? calculatePotency(lx): NEUTRAL
+                setYaw(scale(gamepads[0].axes[2], -1, 1, 180, 0).toFixed());
+                setPitch(scale(gamepads[0].axes[3], -1, 1, 180, 0).toFixed());
+                setRotation(scale(gamepads[0].axes[0], -1, 1, 180, 0).toFixed());
+
+                if (gamepads[0].buttons[0].value > 0 || gamepads[0].buttons[0].pressed) {
+                    //x
+                    commands_arduino = 1;
+                }
+                else if (gamepads[0].buttons[1].value > 0 || gamepads[0].buttons[1].pressed) {
+                    //circle
+                    commands_arduino = 4;
+                }
+                else if (gamepads[0].buttons[2].value > 0 || gamepads[0].buttons[2].pressed) {
+                    //square
+                    commands_arduino = 3;
+                }
+                else if (gamepads[0].buttons[3].value > 0 || gamepads[0].buttons[3].pressed) {
+                    //triangle
+                    commands_arduino = 2;
+                }
+                else{
+                    commands_arduino = 0;
+                }
+
+                if(ry > safeZone || ry < -safeZone){
+                    commands_throttle = calculateThrottlePotency(ry)
+                }
+                else{
+                    commands_throttle = NEUTRAL_THROTTLE;
+                }
+
+                if (gamepads[0].buttons[14].pressed){
+                    //left
+                    modes = 'MANUAL';
+                }
+                else if( gamepads[0].buttons[12].pressed){
+                    //up
+                    modes = 'STABILIZE';
+                }
+                else if(gamepads[0].buttons[13].pressed){
+                    //up
+                    modes = 'ACRO';
+                }
+                commands_mode = modes;
+            }
+            if(ws !== null){
+                ws.onmessage = (event) => {
+                    const commands_instance = {
+                        throttle: commands_throttle,
+                        roll: commands_roll,
+                        pitch: commands_pitch,
+                        yaw: commands_yaw,
+                        arm_disarm: true,
+                        mode: commands_mode,
+                        arduino: commands_arduino,
+                    }
+                    ws.send(JSON.stringify(commands_instance))
+                }
+            }
+        }, 4);
+    })
 
     const getSliderValue = (element) => {
-        setPowerLimit(element);
+        setPowerLimit(element /100.0);
     }
 
     const handleCameraChange = () => {
-        //console.log('Active camera is ' + activeCamera);
         setActiveCamera(activeCamera === 1 ? 0 : 1);
 
     };
 
-    setInterval(() => {
-        const gamepads = navigator.getGamepads();
-        if (gamepads && gamepads[0]) {
-            const safeZone = 0.012;
-            const lx = gamepads[0].axes[0];
-            const ly = gamepads[0].axes[1];
-
-            const rx = gamepads[0].axes[2];
-            const ry = gamepads[0].axes[3];
-
-            commands_instance.yaw = ( rx > safeZone || rx < -safeZone) ? parseInt(calculatePotency(rx)): NEUTRAL
-            commands_instance.pitch = ( ly > safeZone || ly < -safeZone) ? calculatePotency(-ly): NEUTRAL
-            commands_instance.roll = (lx > safeZone || lx < -safeZone) ? calculatePotency(lx): NEUTRAL
-            setYaw(scale(gamepads[0].axes[2], -1, 1, 180, 0).toFixed());
-            setPitch(scale(gamepads[0].axes[3], -1, 1, 180, 0).toFixed());
-            setRotation(scale(gamepads[0].axes[0], -1, 1, 180, 0).toFixed());
-
-            if (gamepads[0].buttons[0].value > 0 || gamepads[0].buttons[0].pressed) {
-                //x
-                commands_instance.arduino = 1;
-            }
-            else if (gamepads[0].buttons[1].value > 0 || gamepads[0].buttons[1].pressed) {
-                //circle
-                commands_instance.arduino = 4;
-            }
-            else if (gamepads[0].buttons[2].value > 0 || gamepads[0].buttons[2].pressed) {
-                //square
-                commands_instance.arduino = 3;
-            }
-            else if (gamepads[0].buttons[3].value > 0 || gamepads[0].buttons[3].pressed) {
-                //triangle
-                commands_instance.arduino = 2;
-            }
-            else{
-                commands_instance.arduino = 0;
-            }
-
-            if(ry > safeZone || ry < -safeZone){
-                commands_instance.throttle = parseInt((-ry * THROTTLE_RANGE) + NEUTRAL_THROTTLE)
-            }
-            else{
-                commands_instance.throttle = NEUTRAL_THROTTLE;
-            }
-
-            if (gamepads[0].buttons[14].pressed){
-                //left
-                modes = 'MANUAL';
-            }
-            else if( gamepads[0].buttons[12].pressed){
-                //up
-                modes = 'STABILIZE';
-            }
-            else if(gamepads[0].buttons[13].pressed){
-                //up
-                modes = 'ACRO';
-            }
-            commands_instance.mode = modes;
-        }
-    }, 10);
     return (
         <>
             <div className="PilotCards-container">

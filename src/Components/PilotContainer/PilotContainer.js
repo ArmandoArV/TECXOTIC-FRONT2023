@@ -29,12 +29,14 @@ export default function PilotContainer(props) {
 
     let modes = 'MANUAL';
 
-    const calculatePotency = (joystick) =>{
-        return parseInt(joystick * RANGE * powerLimitRef.current);
+    const calculatePotency = (joystick, trigger) =>{
+        const tempPowerLimit = trigger ? powerLimitRef.current : 1.0;
+        return parseInt(joystick * RANGE * tempPowerLimit);
     }
 
-    const calculateThrottlePotency = (joystick) =>{
-        return parseInt((-joystick * THROTTLE_RANGE) * powerLimitRef.current + NEUTRAL_THROTTLE);
+    const calculateThrottlePotency = (joystick, trigger) =>{
+        const tempPowerLimit = trigger ? powerLimitRef.current : 1.0;
+        return parseInt((-joystick * THROTTLE_RANGE) * tempPowerLimit + NEUTRAL_THROTTLE);
     }
 
     useEffect(() => {
@@ -72,10 +74,10 @@ export default function PilotContainer(props) {
             const gamepads = navigator.getGamepads();
             if (gamepads && gamepads[0]) {
                 const safeZone = 0.012;
-                //let trigger = false;
-                /*if(gamepads[0].buttons[4].pressed){
+                let trigger = false;
+                if(gamepads[0].buttons[4].pressed || gamepads[0].buttons[5].pressed){
                     trigger = true;
-                }*/
+                }
 
                 const lx = gamepads[0].axes[0];
                 const ly = gamepads[0].axes[1];
@@ -83,9 +85,9 @@ export default function PilotContainer(props) {
                 const rx = gamepads[0].axes[2];
                 const ry = gamepads[0].axes[3];
 
-                commands_yaw = ( rx > safeZone || rx < -safeZone) ? parseInt(calculatePotency(rx)): NEUTRAL
-                commands_pitch = ( ly > safeZone || ly < -safeZone) ? calculatePotency(-ly): NEUTRAL
-                commands_roll = (lx > safeZone || lx < -safeZone) ? calculatePotency(lx): NEUTRAL
+                commands_yaw = ( rx > safeZone || rx < -safeZone) ? parseInt(calculatePotency(rx, trigger)): NEUTRAL
+                commands_pitch = ( ly > safeZone || ly < -safeZone) ? calculatePotency(-ly, trigger): NEUTRAL
+                commands_roll = (lx > safeZone || lx < -safeZone) ? calculatePotency(lx, trigger): NEUTRAL
                 setYaw(scale(gamepads[0].axes[2], -1, 1, 180, 0).toFixed());
                 setPitch(scale(gamepads[0].axes[3], -1, 1, 180, 0).toFixed());
                 setRotation(scale(gamepads[0].axes[0], -1, 1, 180, 0).toFixed());
@@ -111,7 +113,7 @@ export default function PilotContainer(props) {
                 }
 
                 if(ry > safeZone || ry < -safeZone){
-                    commands_throttle = calculateThrottlePotency(ry)
+                    commands_throttle = calculateThrottlePotency(ry, trigger)
                 }
                 else{
                     commands_throttle = NEUTRAL_THROTTLE;

@@ -26,8 +26,6 @@ export default function PilotContainer(props) {
     const powerLimitRef = useRef();
     powerLimitRef.current = powerLimit;
     const [counter, setCounter] = useState(0);
-    const [lightNotPressed, setLightNotPressed] = useState(true);
-    const [motorNotPressed, setMotorNotPressed] = useState(true);
 
     let modes = 'MANUAL';
 
@@ -115,16 +113,14 @@ export default function PilotContainer(props) {
                     commands_arduino = 0;
                 }
 
-                if(lightNotPressed && gamepads[0].buttons[11].pressed){
+                if(gamepads[0].buttons[11].pressed){
                     //right joystick button
                     commands_arduino = 5;
-                    setLightNotPressed(false);
                 }
 
-                if(motorNotPressed && gamepads[0].buttons[15].pressed){
+                if(gamepads[0].buttons[15].pressed){
                     //right
                     commands_arduino = 6;
-                    setMotorNotPressed(false)
                 }
 
                 if(ry > safeZone || ry < -safeZone){
@@ -163,12 +159,6 @@ export default function PilotContainer(props) {
                 }
             }
         }, 4);
-        const waitPressedButtons = setInterval(() => {
-            setMotorNotPressed(true);
-            setLightNotPressed(true);
-        }, 250)
-
-        return () => {clearInterval(interval); clearInterval(waitPressedButtons);};
     })
 
     const getSliderValue = (element) => {

@@ -26,6 +26,8 @@
 .right-box {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 100%;
   width: 50%;
   background-color: var(--aqua_tecxotic);
@@ -48,8 +50,8 @@
   background-color: #fff;
   border-radius: 25px;
   padding: 15px;
-  height: 90%;
-  width: 90%;
+  height: 485px;
+  width: 645px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
 

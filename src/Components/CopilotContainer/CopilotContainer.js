@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Lateral from "../LateralNavbar/Lateral";
 import CameraProp from "../CameraProp/CameraProp";
 import { arrayOfCameras } from "../../Constants";
+import Webcam from "react-webcam";
 import "./CopilotContainer.css";
 
 export default function CopilotContainer() {
@@ -22,20 +23,9 @@ export default function CopilotContainer() {
         </div>
         <div className="right-box">
           <div className="top-right-box">
-            {
-            arrayOfCameras.map((camera, index) => (
-              <div 
-                key={index}
-                className="CameraContainer"
-              >
-                <CameraProp
-                  image={camera.image}
-                  idImg={camera.idImg}
-                  styles={{ width: "95%", height: "95%", borderRadius: "25px" }}
-                />
+              <div className="CameraContainer" >
+                <Webcam height={480} width={680} />
               </div>
-            ))
-          }
           </div>
         </div>
       </div>

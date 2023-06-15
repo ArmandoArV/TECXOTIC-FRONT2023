@@ -4,12 +4,12 @@ import { arrayOfFishes } from "../../Constants";
 import "./DNA.css";
 
 export default function DNA() {
-  const [getDNASampleA, setDNASampleA] = useState("BlueHead");
-  const [getDNASampleNameA, setDNASampleNameA] = useState("BlueHead");
+  const [getDNASampleA, setDNASampleA] = useState("");
+  const [getDNASampleNameA, setDNASampleNameA] = useState("FISH A");
   const [getDNASampleB, setDNASampleB] = useState("");
-  const [getDNASampleNameB, setDNASampleNameB] = useState("PEZ B");
+  const [getDNASampleNameB, setDNASampleNameB] = useState("FISH B");
   const [getDNASampleC, setDNASampleC] = useState("");
-  const [getDNASampleNameC, setDNASampleNameC] = useState("PEZ C");
+  const [getDNASampleNameC, setDNASampleNameC] = useState("FISH C");
   const [getDNASamples, setDNASamples] = useState([
     getDNASampleA,
     getDNASampleB,

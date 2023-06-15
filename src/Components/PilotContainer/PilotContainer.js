@@ -26,6 +26,8 @@ export default function PilotContainer(props) {
     const powerLimitRef = useRef();
     powerLimitRef.current = powerLimit;
     const [counter, setCounter] = useState(0);
+    const [lightNotPressed, setLightNotPressed] = useState(true);
+    const [motorNotPressed, setMotorNotPressed] = useState(true);
 
     let modes = 'MANUAL';
 
@@ -62,7 +64,7 @@ export default function PilotContainer(props) {
     })
 
     useEffect(() => {
-        const interval = setInterval((tempPowerLimit) => {
+        const interval = setInterval(() => {
 
             let commands_yaw = 0;
             let commands_pitch = 0;
@@ -76,6 +78,7 @@ export default function PilotContainer(props) {
                 const safeZone = 0.012;
                 let trigger = false;
                 if(gamepads[0].buttons[4].pressed || gamepads[0].buttons[5].pressed){
+                    //LB or RB
                     trigger = true;
                 }
 
@@ -88,28 +91,40 @@ export default function PilotContainer(props) {
                 commands_yaw = ( rx > safeZone || rx < -safeZone) ? parseInt(calculatePotency(rx, trigger)): NEUTRAL
                 commands_pitch = ( ly > safeZone || ly < -safeZone) ? calculatePotency(-ly, trigger): NEUTRAL
                 commands_roll = (lx > safeZone || lx < -safeZone) ? calculatePotency(lx, trigger): NEUTRAL
-                setYaw(scale(gamepads[0].axes[2], -1, 1, 180, 0).toFixed());
-                setPitch(scale(gamepads[0].axes[3], -1, 1, 180, 0).toFixed());
-                setRotation(scale(gamepads[0].axes[0], -1, 1, 180, 0).toFixed());
+                setYaw(scale(rx, -1, 1, 180, 0).toFixed());
+                setPitch(scale(ly, -1, 1, 180, 0).toFixed());
+                setRotation(scale(lx, -1, 1, 180, 0).toFixed());
 
-                if (gamepads[0].buttons[0].value > 0 || gamepads[0].buttons[0].pressed) {
+                if (gamepads[0].buttons[0].pressed) {
                     //x
                     commands_arduino = 1;
                 }
-                else if (gamepads[0].buttons[1].value > 0 || gamepads[0].buttons[1].pressed) {
+                else if (gamepads[0].buttons[1].pressed) {
                     //circle
                     commands_arduino = 4;
                 }
-                else if (gamepads[0].buttons[2].value > 0 || gamepads[0].buttons[2].pressed) {
+                else if (gamepads[0].buttons[2].pressed) {
                     //square
                     commands_arduino = 3;
                 }
-                else if (gamepads[0].buttons[3].value > 0 || gamepads[0].buttons[3].pressed) {
+                else if (gamepads[0].buttons[3].pressed) {
                     //triangle
                     commands_arduino = 2;
                 }
                 else{
                     commands_arduino = 0;
+                }
+
+                if(lightNotPressed && gamepads[0].buttons[11].pressed){
+                    //right joystick button
+                    commands_arduino = 5;
+                    setLightNotPressed(false);
+                }
+
+                if(motorNotPressed && gamepads[0].buttons[15].pressed){
+                    //right
+                    commands_arduino = 6;
+                    setMotorNotPressed(false)
                 }
 
                 if(ry > safeZone || ry < -safeZone){
@@ -128,7 +143,7 @@ export default function PilotContainer(props) {
                     modes = 'STABILIZE';
                 }
                 else if(gamepads[0].buttons[13].pressed){
-                    //up
+                    //down
                     modes = 'ACRO';
                 }
                 commands_mode = modes;
@@ -148,6 +163,12 @@ export default function PilotContainer(props) {
                 }
             }
         }, 4);
+        const waitPressedButtons = setInterval(() => {
+            setMotorNotPressed(true);
+            setLightNotPressed(true);
+        }, 250)
+
+        return () => {clearInterval(interval); clearInterval(waitPressedButtons);};
     })
 
     const getSliderValue = (element) => {

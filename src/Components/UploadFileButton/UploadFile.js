@@ -9,7 +9,7 @@ export default function FileUploader(props) {
   
     return (
       <div className="fileUploadContainer">
-        <input type="file" onChange={handleFileUpload} />
+        <input type="file" onChange={handleFileUpload} accept="image/*"/>
       </div>
     );
   }

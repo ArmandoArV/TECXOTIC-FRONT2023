@@ -7,9 +7,9 @@ export default function Measure(props) {
         const imageSrc = props.webcam.current.getScreenshot();
         var a = document.createElement("a"); //Create <a>
         a.href = imageSrc; //Image Base64 Goes here
-        a.download = "Image.png"; //File name Here
+        a.download = "Measure.png"; //File name Here
         a.click(); 
-  }
+    }
 
 
     return (

@@ -24,16 +24,16 @@ export default function LateralNavbar(props) {
   const handleSelectedButton = useCallback((button) => {
     switch (button.name) {
       case "Measure":
-        props.handleSelectedComponent(<Measure />);
+        props.handleSelectedComponent(<Measure webcam={props.webcam}/>);
         break;
       case "eDNA":
         props.handleSelectedComponent(<DNA />);
         break;
       case "Comparator":
-        props.handleSelectedComponent(<ComparatorContainer />);
+        props.handleSelectedComponent(<ComparatorContainer webcam={props.webcam}/>);
         break;
       default:
-        props.handleSelectedComponent(<ComparatorContainer />);
+        props.handleSelectedComponent(<ComparatorContainer webcam={props.webcam}/>);
     }
   }, [props.handleSelectedComponent]);
 

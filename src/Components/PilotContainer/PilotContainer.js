@@ -109,6 +109,14 @@ export default function PilotContainer(props) {
                     //triangle
                     commands_arduino = 2;
                 }
+                else if (gamepads[0].buttons[6].pressed) {
+                    //LT
+                    commands_arduino = 7;
+                }
+                else if (gamepads[0].buttons[7].pressed) {
+                    //RT
+                    commands_arduino = 6;
+                }
                 else{
                     commands_arduino = 0;
                 }
@@ -116,11 +124,6 @@ export default function PilotContainer(props) {
                 if(gamepads[0].buttons[11].pressed){
                     //right joystick button
                     commands_arduino = 5;
-                }
-
-                if(gamepads[0].buttons[15].pressed){
-                    //right
-                    commands_arduino = 6;
                 }
 
                 if(ry > safeZone || ry < -safeZone){

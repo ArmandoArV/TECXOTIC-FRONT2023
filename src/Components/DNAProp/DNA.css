@@ -81,9 +81,6 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    height: 50%;
-    width: 100%;
-    background-color: blue;
 }
 
 .bottomAnalysisContainer{
@@ -95,23 +92,24 @@
     width: 100%;
 }
 
-.leftDNAContainer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 50%;
-    background-color: var(--mid_blue_subnautica);
-}
+
 
 .rightDNAContainer{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100%;
-    width: 50%;
+    height: 6em;
     background-color: var(--white_tecxotic);
 }
 
+.dnaImage {
+    width: 10em;
+    height: auto;
+    padding-right: 1em;
+}
+
+.bottomSampleMatchedContainer{
+    font-size: 1.5em;
+    padding: 1em;
+}

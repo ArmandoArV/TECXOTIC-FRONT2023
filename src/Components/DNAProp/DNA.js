@@ -1,53 +1,76 @@
 import React, { useState } from "react";
-import FileUploader from "../UploadFileButton/UploadFile";
 import { arrayOfFishes } from "../../Constants";
 import "./DNA.css";
+import { flask_address} from "../../Constants";
 
 export default function DNA() {
-  const [getDNASampleA, setDNASampleA] = useState("");
-  const [getDNASampleNameA, setDNASampleNameA] = useState("FISH A");
-  const [getDNASampleB, setDNASampleB] = useState("");
-  const [getDNASampleNameB, setDNASampleNameB] = useState("FISH B");
-  const [getDNASampleC, setDNASampleC] = useState("");
-  const [getDNASampleNameC, setDNASampleNameC] = useState("FISH C");
-  const [getDNASamples, setDNASamples] = useState([
-    getDNASampleA,
-    getDNASampleB,
-    getDNASampleC,
-  ]);
+  const [DNAInputA, setDNAInputA] = useState("");
+  const [DNAInputB, setDNAInputB] = useState("");
+  const [DNAInputC, setDNAInputC] = useState("");
+  const [DNASampleImageA, setDNASampleImageA] = useState("");
+  const [DNASampleNameA, setDNASampleNameA] = useState("FISH A");
+  const [DNASampleImageB, setDNASampleImageB] = useState("");
+  const [DNASampleNameB, setDNASampleNameB] = useState("FISH B");
+  const [DNASampleImageC, setDNASampleImageC] = useState("");
+  const [DNASampleNameC, setDNASampleNameC] = useState("FISH C");
 
-  console.log("getDNASamples: ", getDNASamples);
-
-  const classifyDNASample = (samples) => {
-    samples.forEach((sample, index) => {
-      const matchedFish = arrayOfFishes.find((fish) => fish.id === sample);
-      if (matchedFish) {
-        // const sampleStateSetter = `setDNASample${String.fromCharCode(65 + index)}`;
-        // const nameStateSetter = `setDNASampleName${String.fromCharCode(65 + index)}`;
-
-        setDNASamples((prevSamples) => {
-          const updatedSamples = [...prevSamples];
-          updatedSamples[index] = matchedFish.image;
-          return updatedSamples;
-        });
-
-        setDNASamples((prevNames) => {
-          const updatedNames = [...prevNames];
-          updatedNames[index] = matchedFish.name;
-          return updatedNames;
-        });
-
-        console.log("Matched Fish: ", matchedFish);
-      }
-    });
+  const handleDNAInputA = (e: {
+        target: { value: React.SetStateAction<string> };
+      }) => {
+        setDNAInputA(e.target.value);
   };
 
+  const handleDNAInputB = (e: {
+        target: { value: React.SetStateAction<string> };
+      }) => {
+        setDNAInputB(e.target.value);
+  };
 
+  const handleDNAInputC = (e: {
+        target: { value: React.SetStateAction<string> };
+      }) => {
+        setDNAInputC(e.target.value);
+  };
 
-  console.log("getDNASampleA: ", getDNASampleA);
-  console.log("getDNASampleB: ", getDNASampleB);
-  console.log("getDNASampleC: ", getDNASampleC);
-
+  const handleSend = async () => {
+    if(DNAInputA !== "" && DNAInputB !== "" && DNAInputC){
+      const response = await fetch(flask_address + `/getCoralSpecies`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: {
+          "1": DNAInputA,
+          "2": DNAInputB,
+          "3": DNAInputC
+        }
+      });
+      if(response.ok){
+        const data = await response.json();
+        const fish1 = data.fish1.common_name;
+        const fish2 = data.fish2.common_name;
+        const fish3 = data.fish3.common_name;
+        setDNASampleNameA(fish1);
+        setDNASampleNameB(fish2);
+        setDNASampleNameC(fish3);
+        const fishIndex1 = arrayOfFishes.findIndex(e => e.scientific_name === data.fish1.scientific_name);
+        const fishIndex2 = arrayOfFishes.findIndex(e => e.scientific_name === data.fish2.scientific_name);
+        const fishIndex3 = arrayOfFishes.findIndex(e => e.scientific_name === data.fish3.scientific_name);
+        setDNASampleImageA(arrayOfFishes[fishIndex1].image);
+        setDNASampleImageB(arrayOfFishes[fishIndex2].image);
+        setDNASampleImageC(arrayOfFishes[fishIndex3].image);
+        setDNAInputA("");
+        setDNAInputB("");
+        setDNAInputC("");
+      }
+      else{
+        alert('There was an error with the connection');
+      }
+    }
+    else{
+      alert('You need to fill the three DNA inputs');
+    }
+  }
 
   return (
     <>
@@ -56,7 +79,7 @@ export default function DNA() {
           <div className="dnaButtonContainer">
             <button
               className="startSearchButton"
-              onClick={() => classifyDNASample(getDNASamples)}
+              onClick={handleSend}
             >
               Start Search
             </button>
@@ -70,7 +93,7 @@ export default function DNA() {
                   <div className="sampleImgContainer">
                     <img
                       className="dnaImage"
-                      src={getDNASampleA}
+                      src={DNASampleImageA}
                       alt="DNA Sample A"
                     />
                   </div>
@@ -78,7 +101,7 @@ export default function DNA() {
                 <div className="rightDNAContainer">
                   <div className="topMatchedImgContainer"></div>
                   <div className="bottomSampleMatchedContainer">
-                    <h1 className="sampleName">{getDNASampleNameA}</h1>
+                    <h1 className="sampleName">{DNASampleNameA}</h1>
                   </div>
                 </div>
               </div>
@@ -91,7 +114,7 @@ export default function DNA() {
                   <div className="sampleImgContainer">
                     <img
                       className="dnaImage"
-                      src={getDNASampleB}
+                      src={DNASampleImageB}
                       alt="DNA Sample B"
                     />
                   </div>
@@ -99,7 +122,7 @@ export default function DNA() {
                 <div className="rightDNAContainer">
                   <div className="topMatchedImgContainer"></div>
                   <div className="bottomSampleMatchedContainer">
-                    <h1 className="sampleName">{getDNASampleNameB}</h1>
+                    <h1 className="sampleName">{DNASampleNameB}</h1>
                   </div>
                 </div>
               </div>
@@ -112,7 +135,7 @@ export default function DNA() {
                   <div className="sampleImgContainer">
                     <img
                       className="dnaImage"
-                      src={getDNASampleC}
+                      src={DNASampleImageC}
                       alt="DNA Sample C"
                     />
                   </div>
@@ -120,16 +143,16 @@ export default function DNA() {
                 <div className="rightDNAContainer">
                   <div className="topMatchedImgContainer"></div>
                   <div className="bottomSampleMatchedContainer">
-                    <h1 className="sampleName">{getDNASampleNameC}</h1>
+                    <h1 className="sampleName">{DNASampleNameC}</h1>
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <div className="bottomAnalysisContainer">
-            <div className="fileUploaderContainer">
-              <FileUploader onUpload={setDNASamples} />
-            </div>
+              <input name="DNAA" type="text" placeholder={"DNA A"} title="Enter the DNA Sample A" onChange={handleDNAInputA} value={DNAInputA} autoComplete="true"></input>
+              <input name="DNAB" type="text"  placeholder={"DNA B"} title="Enter the DNA Sample B" onChange={handleDNAInputB} value={DNAInputB}autoComplete="true"></input>
+              <input name="DNAC" type="text" placeholder={"DNA C"} title="Enter the DNA Sample C" onChange={handleDNAInputC} value={DNAInputC} autoComplete="true"></input>
           </div>
         </div>
       </div>

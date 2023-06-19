@@ -20,8 +20,11 @@ export default function PilotContainer(props) {
     const [rotation, setRotation] = useState(props.rotation);
     const [pitch, setPitch] = useState(props.pitch);
     const [yaw, setYaw] = useState(props.yaw);
-    const dicOfCon = { wifi: props.wifiStatus, gamepad: props.gamepadStatus, flag: props.flagStatus, gear: props.gearStatus }
-    const [connections, setConnections] = useState([dicOfCon.wifi, dicOfCon.gamepad, dicOfCon.flag, dicOfCon.gear]);
+    const wifiStatus = useRef(false);
+    const gamepadStatus = useRef(false);
+    const flagStatus = useRef(false);
+    const gearStatus = useRef(false);
+    const [connections, setConnections] = useState([wifiStatus.current, gamepadStatus.current, flagStatus.current, gearStatus.current]);
     const [powerLimit, setPowerLimit] = useState(1.0);
     const powerLimitRef = useRef();
     powerLimitRef.current = powerLimit;
@@ -73,6 +76,7 @@ export default function PilotContainer(props) {
 
             const gamepads = navigator.getGamepads();
             if (gamepads && gamepads[0]) {
+                gamepadStatus.current = true;
                 const safeZone = 0.012;
                 let trigger = false;
                 if(gamepads[0].buttons[4].pressed || gamepads[0].buttons[5].pressed){
@@ -147,6 +151,9 @@ export default function PilotContainer(props) {
                 }
                 commands_mode = modes;
             }
+            else{
+                gamepadStatus.current = false;
+            }
             if(ws !== null){
                 ws.onmessage = (event) => {
                     const commands_instance = {
@@ -161,6 +168,7 @@ export default function PilotContainer(props) {
                     ws.send(JSON.stringify(commands_instance))
                 }
             }
+            setConnections([wifiStatus.current, gamepadStatus.current, flagStatus.current, gearStatus.current])
         }, 4);
     })
 

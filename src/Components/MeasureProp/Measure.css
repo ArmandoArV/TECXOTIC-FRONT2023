@@ -46,6 +46,20 @@
   font-size: 1.5em;
 }
 
+.render3D {
+  border-radius: 5px;
+  background-color: var(--mid_blue_subnautica);
+  outline: none;
+  border: none;
+  color: #fff;
+  font-size: 1.5em;
+}
+
+.render3D:hover {
+  background-color: var(--aqua_tecxotic);
+  cursor: pointer;
+}
+
 .startMeasureButton:hover {
   background-color: var(--aqua_tecxotic);
   cursor: pointer;
@@ -62,3 +76,19 @@
   margin-top: 3em;
 }
 
+.modelcontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.modelinputcontainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.bottomitems {
+  margin: 1em 1em;
+}

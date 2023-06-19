@@ -19,7 +19,6 @@ export default function DNA() {
   const [DNASampleNameC, setDNASampleNameC] = useState("FISH C");
   const [DNASciNameC, setDNASciNameC] = useState('FISH C')
 
-
   const handleDNAInputA = (e) => {
         setDNAInputA(e.target.value);
   };
@@ -39,10 +38,15 @@ export default function DNA() {
           "Content-Type": "application/json"
         }
       }
+      
+      const temp1 = DNAInputA.replace(/[\r\n]/gm, '');
+      const temp2 = DNAInputB.replace(/[\r\n]/gm, '');
+      const temp3 = DNAInputC.replace(/[\r\n]/gm, '');
+      
       const body = {
-        "1": DNAInputA,
-        "2": DNAInputB,
-        "3": DNAInputC
+        "1": temp1, 
+        "2": temp2,
+        "3": temp3
       }
       const response = await axios.post(
         `${flask_address}/getCoralSpecie`,
@@ -51,6 +55,7 @@ export default function DNA() {
 
       if(response.status == 200){
         const data = response.data
+
         console.log(data);
         setDNASampleNameA(data.fish1.common_name);
         setDNASampleNameB(data.fish2.common_name);

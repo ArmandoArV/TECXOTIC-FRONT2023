@@ -151,9 +151,9 @@ export default function PilotContainer(props) {
                 }
                 commands_mode = modes;
             }
-            else{
+            /*else{
                 gamepadStatus.current = false;
-            }
+            }*/
             if(ws !== null){
                 ws.onmessage = (event) => {
                     const commands_instance = {
@@ -168,7 +168,7 @@ export default function PilotContainer(props) {
                     ws.send(JSON.stringify(commands_instance))
                 }
             }
-            setConnections([wifiStatus.current, gamepadStatus.current, flagStatus.current, gearStatus.current])
+            //setConnections([wifiStatus.current, gamepadStatus.current, flagStatus.current, gearStatus.current])
         }, 4);
     })
 
